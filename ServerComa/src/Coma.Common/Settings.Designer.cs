@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Template.Common {
+namespace Coma.Common {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

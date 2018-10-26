@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Template.Common.Message;
+using Coma.Common.Message;
 using UnityEngine;
 
 public class Main : MonoBehaviour {

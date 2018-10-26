@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Template.Server.Properties {
+namespace Coma.Server.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -20,18 +20,6 @@ namespace Template.Server.Properties {
         public static Settings Default {
             get {
                 return defaultInstance;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("World\\map.json")]
-        public string MapLocation {
-            get {
-                return ((string)(this["MapLocation"]));
-            }
-            set {
-                this["MapLocation"] = value;
             }
         }
     }

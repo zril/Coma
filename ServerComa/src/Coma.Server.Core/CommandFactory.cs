@@ -18,7 +18,7 @@ namespace Coma.Server.Core
             COMMANDS = new Dictionary<string, ICommand>();
 
             var commands = Assembly.GetExecutingAssembly().GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "Template.Server.Core.Command" && t.Name != "CommandFactory").ToList();
+                .Where(t => t.IsClass && !t.IsAbstract && t.Namespace == "Coma.Server.Core.Command" && t.Name != "CommandFactory").ToList();
 
             foreach (CommandType command in Enum.GetValues(typeof(CommandType)))
             {

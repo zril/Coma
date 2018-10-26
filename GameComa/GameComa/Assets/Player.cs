@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Template.Common;
-using Template.Common.Parameter;
+using Coma.Common;
+using Coma.Common.Parameter;
 using UnityEngine;
 
 public class Player : MonoBehaviour {

@@ -2,13 +2,13 @@
 using Anjril.Common.Network;
 using Anjril.Common.Network.TcpImpl;
 using Anjril.Common.Network.TcpImpl.Properties;
-using Template.Common.Message;
+using Coma.Common.Message;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
-using Template.Common.Parameter;
+using Coma.Common.Parameter;
 
 class Global
 {

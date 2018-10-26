@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Template.Server.Model.Properties {
+namespace Coma.Server.Model.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
