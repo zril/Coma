@@ -87,7 +87,8 @@ public class InputControl : MonoBehaviour
     public void SelectForBuild(TileItemType type)
     {
         TileItem item = TileItemInfo.Get(type);
-        SelectImage.GetComponent<Image>().sprite = MainController.TileItemSprites[(int)type];
+        SelectImage.GetComponent<Image>().sprite = MainController.TileItemSprites[(int)item.Fonction];
+        SelectImage.GetComponent<Image>().color = MainController.TileItemColors[(int)item.Synergy];
         SelectedBuildItem = type;
     }
 
