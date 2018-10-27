@@ -4,7 +4,8 @@ using Coma.Common.Message;
 using Coma.Common.Map;
 using UnityEngine;
 
-public class Main : MonoBehaviour {
+public class Main : MonoBehaviour
+{
 
     Dictionary<int, GameObject> players;
 
@@ -12,22 +13,24 @@ public class Main : MonoBehaviour {
     public Transform TileParent;
     TileView[,] TileMap;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         Global.Instance.InitClient();
         players = new Dictionary<int, GameObject>();
         TileMap = null;
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-		
-        while (Global.Instance.PlayerMessages.Count > 0)
+    // Update is called once per frame
+    void Update()
+    {
+
+
+        while (Global.Instance.MapMessages.Count > 0)
         {
 
             MapMessage mapMessage = Global.Instance.MapMessages.Dequeue();
-            if (TileMap == null )
+            if (TileMap == null)
             {
                 // Remove current Tiles ?
 
@@ -48,26 +51,31 @@ public class Main : MonoBehaviour {
                     TileMap[x, y].UpdateTile(mapMessage.TileMap[x, y]);
                 }
             }
+        }
 
 
-            GameObject player;
+        GameObject player;
 
+        while (Global.Instance.PlayerMessages.Count > 0)
+        {
             PlayerMessage playerMessage = Global.Instance.PlayerMessages.Dequeue();
             if (players.ContainsKey(playerMessage.Id))
             {
                 player = players[playerMessage.Id];
                 player.transform.position = new Vector3((float)playerMessage.X, (float)playerMessage.Y, 0);
                 Debug.Log("update " + playerMessage.Id + " " + playerMessage.X + " " + playerMessage.Y);
-            } else
+            }
+            else
             {
                 player = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player"), new Vector3((float)playerMessage.X, (float)playerMessage.Y, 0), Quaternion.identity);
                 players.Add(playerMessage.Id, player);
                 player.GetComponent<Player>().playerId = playerMessage.Id;
                 Debug.Log("new " + playerMessage.Id + " " + playerMessage.X + " " + playerMessage.Y);
             }
-
         }
-	}
+
+
+    }
 
     private void OnApplicationQuit()
     {

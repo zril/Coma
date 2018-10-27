@@ -26,7 +26,7 @@ namespace Coma.Common.Message
         {
             string[] messageTab = args.Split('#');
 
-            string[] sizeTab = messageTab[0].Split(';');
+            string[] sizeTab = messageTab[0].Split(',');
             int width = int.Parse(sizeTab[0]);
             int height = int.Parse(sizeTab[1]);
 
@@ -48,6 +48,7 @@ namespace Coma.Common.Message
 
         public override string ToString()
         {
+
             string message = string.Format("{0},{1}", TileMap.GetLength(0), TileMap.GetLength(1));
 
             for (int y = 0; y < TileMap.GetLength(1); y++)
@@ -58,7 +59,7 @@ namespace Coma.Common.Message
                 }
             }
 
-            return message;
+            return base.ToString() + message;
         }
 
         #endregion

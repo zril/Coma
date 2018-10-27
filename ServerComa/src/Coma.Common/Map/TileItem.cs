@@ -9,6 +9,10 @@ namespace Coma.Common.Map.Item
     {
         public TileItemType ItemType { get; set; }
         public int Synergy { get; set; }
+        public TileItemCategory Category { get; set; }
+        public TileItemFonction Fonction { get; set; }
+        public TileItemSynergyMode SynergyMode { get; set; }
+        public List<TileItemCategory> SynergyCaterories { get; set; }
 
         public abstract string ToMessage();
 

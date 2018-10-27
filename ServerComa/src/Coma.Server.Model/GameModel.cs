@@ -11,7 +11,7 @@ namespace Coma.Server.Model
 {
     public class GameModel
     {
-        private const int mapSize = 100;
+        private const int mapSize = 10;
 
         #region singleton
 

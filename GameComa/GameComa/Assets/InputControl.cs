@@ -5,6 +5,7 @@ using UnityEngine;
 public class InputControl : MonoBehaviour {
 
     public Camera MainCamera;
+    public float CameraSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +26,6 @@ public class InputControl : MonoBehaviour {
             MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileUIAlt"));
         }
 
-        
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileUI");
@@ -35,5 +35,26 @@ public class InputControl : MonoBehaviour {
         {
             MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileUI"));
         }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            MainCamera.transform.position += new Vector3(0, -1) * Time.deltaTime * CameraSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.DownArrow))
+        {
+            MainCamera.transform.position += new Vector3(0, 1) * Time.deltaTime * CameraSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            MainCamera.transform.position += new Vector3(-1, 0) * Time.deltaTime * CameraSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            MainCamera.transform.position += new Vector3(1, 0) * Time.deltaTime * CameraSpeed;
+        }
+
     }
 }

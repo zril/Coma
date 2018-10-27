@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Coma.Common.Map;
+using Coma.Common.Map.Item;
 
 public class TileView : MonoBehaviour {
 
+    [SerializeField]
     public Tile currentTile;
-    public GameObject TileItem;
-
 
     public List<Sprite> TileSprites;
     public List<Sprite> TileItemSprites;
@@ -34,15 +34,15 @@ public class TileView : MonoBehaviour {
 
     public void UpdateDisplay()
     {
-        TileRenderer.sprite = TileSprites[(int)currentTile.tileType];
-        if(currentTile.tileType == TileType.NONE)
+        TileRenderer.sprite = TileSprites[(int)currentTile.Type];
+        if(currentTile.Type == TileType.NONE)
         {
             // Erase all
             TileItemRenderer.sprite = null;
         }
         else
         {
-            if(currentTile.tileItem == null)
+            if(currentTile.Item == null)
             {
                 // Remove Tileitem sprites
                 TileItemRenderer.sprite = null;
@@ -50,9 +50,9 @@ public class TileView : MonoBehaviour {
             else
             {
                 // Replace with constant TileItem
-                TileItem item = null;
-                TileItemRenderer.sprite = TileItemSprites[0];
-                TileItemRenderer.color = TileItemColors[0];
+                TileItem item = TileItemInfo.Get(currentTile.Item.ItemType);
+                TileItemRenderer.sprite = TileItemSprites[(int)item.Fonction];
+                TileItemRenderer.color = TileItemColors[(int)item.SynergyMode];
             }
         }
     }

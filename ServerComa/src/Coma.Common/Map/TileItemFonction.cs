@@ -7,6 +7,7 @@ namespace Coma.Common.Map.Item
 {
     public enum TileItemFonction
     {
+        NONE,
         BUILD_AREA,
         GENERATE,
         HARVEST,

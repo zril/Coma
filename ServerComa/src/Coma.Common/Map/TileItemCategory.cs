@@ -7,6 +7,7 @@ namespace Coma.Common.Map.Item
 {
     public enum TileItemCategory
     {
+        NONE,
         A,
         B,
         C,
