@@ -12,6 +12,7 @@ namespace Coma.Common.Map.Item.Items
 
         public ResourceItem(int capacity)
         {
+            ItemType = TileItemType.RESOURCE_COMMON;
             Capacity = capacity;
             Count = capacity;
         }
@@ -19,15 +20,14 @@ namespace Coma.Common.Map.Item.Items
         public override void FromMessage(string message)
         {
             string[] splitargs = message.Split(',');
-
-            ItemType = (TileItemType)int.Parse(splitargs[0]);
+            
             Synergy = int.Parse(splitargs[1]);
             Count = int.Parse(splitargs[2]);
         }
 
         public override string ToMessage()
         {
-            return string.Format("{0},{1},{2}", ItemType, Synergy, Count);
+            return string.Format("{0},{1},{2}", (int)ItemType, Synergy, Count);
         }
     }
 }

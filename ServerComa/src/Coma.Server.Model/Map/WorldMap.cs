@@ -1,5 +1,6 @@
 ﻿using Coma.Common;
 using Coma.Common.Map;
+using Coma.Common.Map.Item;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,12 @@ namespace Coma.Server.Model.Map
                 for (int j = 0; j < size; j++)
                 {
                     tiles[i, j] = new Tile();
-                    tiles[i, j].tileType = TileType.NORMAL;
+                    tiles[i, j].Type = TileType.NORMAL;
+
+                    if (i == 0)
+                    {
+                        tiles[i, j].Item = TileItemInfo.Get(TileItemType.RESOURCE_COMMON);
+                    }
                 }
             }
         }

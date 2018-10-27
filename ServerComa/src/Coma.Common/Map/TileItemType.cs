@@ -7,6 +7,7 @@ namespace Coma.Common.Map.Item
 {
     public enum TileItemType
     {
+        NONE,
         BUILD_AREA,
         GENERATOR,
         HARVESTOR,

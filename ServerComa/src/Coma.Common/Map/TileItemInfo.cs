@@ -24,6 +24,11 @@ namespace Coma.Common.Map.Item
         private static void initInfo()
         {
             TileItemType type;
+            items = new TileItem[999];
+
+            //NONE
+            type = TileItemType.NONE;
+            items[(int)type] = new NoItem();
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON;
