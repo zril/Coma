@@ -11,7 +11,7 @@ namespace Coma.Server.Core.Module
     public class MapModule : BaseModule
     {
         public MapModule()
-            : base(10000)
+            : base(1000)
         { }
 
         public override void Update(TimeSpan elapsed)

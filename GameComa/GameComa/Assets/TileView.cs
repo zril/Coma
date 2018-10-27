@@ -9,9 +9,7 @@ public class TileView : MonoBehaviour {
     [SerializeField]
     public Tile currentTile;
 
-    public List<Sprite> TileSprites;
-    public List<Sprite> TileItemSprites;
-    public List<Color> TileItemColors;
+    public Main MainController;
 
     public SpriteRenderer TileItemRenderer;
     public SpriteRenderer TileRenderer;
@@ -34,15 +32,15 @@ public class TileView : MonoBehaviour {
 
     public void UpdateDisplay()
     {
-        TileRenderer.sprite = TileSprites[(int)currentTile.Type];
-        if(currentTile.Type == TileType.NONE)
+        TileRenderer.sprite = MainController.TileSprites[(int)currentTile.Type];
+        if(currentTile == null || currentTile.Type == TileType.NONE)
         {
             // Erase all
             TileItemRenderer.sprite = null;
         }
         else
         {
-            if(currentTile.Item == null)
+            if(currentTile.Item == null || currentTile.Item.ItemType == TileItemType.NONE)
             {
                 // Remove Tileitem sprites
                 TileItemRenderer.sprite = null;
@@ -51,8 +49,9 @@ public class TileView : MonoBehaviour {
             {
                 // Replace with constant TileItem
                 TileItem item = TileItemInfo.Get(currentTile.Item.ItemType);
-                TileItemRenderer.sprite = TileItemSprites[(int)item.Fonction];
-                TileItemRenderer.color = TileItemColors[(int)item.SynergyMode];
+                Debug.Log(currentTile.Item.ItemType);
+                TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
+                TileItemRenderer.color = MainController.TileItemColors[(int)item.SynergyMode];
             }
         }
     }
