@@ -19,7 +19,7 @@ public class Main : MonoBehaviour
     public GameObject TileUIPrefab;
     public Transform TileParent;
     public int UpdateFrames;
-    TileView[,] TileMap;
+    public TileView[,] TileMap;
 
     // Use this for initialization
     void Start()
@@ -79,6 +79,19 @@ public class Main : MonoBehaviour
                 }
             }
             yield return null;
+        }
+    }
+
+    public void RequestForBuild(TileItemType item, int x, int y)
+    {
+        if (x >= 0 && x < TileMap.GetLength(0) && y >= 0 && y < TileMap.GetLength(1))
+        {
+            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(x, y), item));
+            TileView tile = TileMap[x, y];
+            if (tile.currentTile.Item != null || tile.currentTile.Item.ItemType == TileItemType.NONE)
+            {
+                //Add temp construct image
+            }
         }
     }
 

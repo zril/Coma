@@ -13,6 +13,10 @@ namespace Coma.Common.Map.Item
         public TileItemFonction Fonction { get; set; }
         public TileItemSynergyMode SynergyMode { get; set; }
         public List<TileItemCategory> SynergyCaterories { get; set; }
+        public int CostCells { get; set; }
+        public int CostNutrients { get; set; }
+        public int CostThoughts { get; set; }
+        public int CostIdeas { get; set; }
 
         public abstract string ToMessage();
 
