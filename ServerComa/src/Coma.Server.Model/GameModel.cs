@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Coma.Server.Model.Entity;
+using Coma.Server.Model.Map;
+using Coma.Common;
 
 namespace Coma.Server.Model
 {
     public class GameModel
     {
+        private const int mapSize = 100;
+
         #region singleton
 
         private static GameModel instance;
@@ -27,26 +31,16 @@ namespace Coma.Server.Model
 
         #endregion
 
-        private Dictionary<int, Player> players; 
+        public Player BodyPlayer { get; set; }
+        public Player SoulPlayer { get; set; }
+
+        public WorldMap BodyMap { get; set; }
+        public WorldMap SoulMap { get; set; }
 
         private GameModel()
         {
-            players = new Dictionary<int, Player>();
-        }
-
-        public List<Player> GetPlayers()
-        {
-            return players.Values.ToList();
-        }
-
-        public void AddPlayer(Player player)
-        {
-            players.Add(player.Id, player);
-        }
-
-        public void RemovePlayer(int playerId)
-        {
-            players.Remove(playerId);
+            BodyMap = new WorldMap(mapSize, PlayerType.BODY);
+            SoulMap = new WorldMap(mapSize, PlayerType.SOUL);
         }
     }
 }

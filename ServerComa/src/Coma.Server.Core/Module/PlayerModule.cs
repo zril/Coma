@@ -17,19 +17,6 @@ namespace Coma.Server.Core.Module
 
         public override void Update(TimeSpan elapsed)
         {
-            var currentPlayers = GameModel.Instance.GetPlayers();
-
-            foreach (var player in currentPlayers)
-            {
-                updatePlayer(player);
-
-                PlayerMessage message = new PlayerMessage(player.Id, player.Position.X, player.Position.Y);
-
-                foreach (var dest in currentPlayers)
-                {
-                    dest.RemoteConnection.Send(message.ToString());
-                }
-            }
         }
 
         private void updatePlayer(Player player)

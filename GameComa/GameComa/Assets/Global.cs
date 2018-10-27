@@ -40,8 +40,8 @@ class Global
 
     private int messageCount = 0;
     private int port = 4242;
-    private string serverIp = "192.168.43.89";
-    private string userName = "body";
+    private string serverIp = "127.0.0.1";
+    private string userName = "soul";
 
     public void InitClient()
     {

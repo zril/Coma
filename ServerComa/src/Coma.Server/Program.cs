@@ -14,6 +14,7 @@ using Anjril.Common.Network.TcpImpl;
 using Coma.Server.Core;
 using Coma.Server.Core.Command;
 using Coma.Server.Model;
+using Coma.Common;
 
 namespace Coma.Server
 {
@@ -92,12 +93,27 @@ namespace Coma.Server
 
         private static bool ConnectionRequested(IRemoteConnection sender, string request, out string response)
         {
-            Player player = new Player(request, sender);
+            Player player = null;
+            switch (request)
+            {
+                case "body":
+                    player = new Player(request, sender, PlayerType.BODY);
+                    PLAYERS.Add(sender, player);
+                    GlobalServer.Instance.AddPlayer(player.Id, sender);
+                    GameModel.Instance.BodyPlayer = player;
+                    break;
+                case "soul":
+                    player = new Player(request, sender, PlayerType.SOUL);
+                    PLAYERS.Add(sender, player);
+                    GlobalServer.Instance.AddPlayer(player.Id, sender);
+                    GameModel.Instance.SoulPlayer = player;
+                    break;
+                default:
+                    response = "KO";
+                    return false;
+            }
             
-
-            PLAYERS.Add(sender, player);
-            GlobalServer.Instance.AddPlayer(player.Id, sender);
-            GameModel.Instance.AddPlayer(player);
+            
 
             response = "OK:" + player.Id;
 
@@ -134,7 +150,6 @@ namespace Coma.Server
             
             GlobalServer.Instance.RemovePlayer(player.Id);
             PLAYERS.Remove(remote);
-            GameModel.Instance.RemovePlayer(player.Id);
 
             Console.WriteLine("disconnected ({0} - {1})", player.Id, player.Name);
         }
@@ -145,7 +160,7 @@ namespace Coma.Server
 
         private static void StartModules()
         {
-            MODULES.Add(new PlayerModule());
+            MODULES.Add(new MapModule());
 
             foreach (IModule mod in MODULES)
             {

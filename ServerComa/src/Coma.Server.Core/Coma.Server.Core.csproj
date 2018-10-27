@@ -55,6 +55,7 @@
     <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Module\BaseModule.cs" />
     <Compile Include="Module\IModule.cs" />
+    <Compile Include="Module\MapModule.cs" />
     <Compile Include="Module\PlayerModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GlobalServer.cs" />
