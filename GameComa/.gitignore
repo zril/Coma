@@ -35,5 +35,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-bin/
-ServerComa/src/packages
+*.dll
