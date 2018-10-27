@@ -8,7 +8,7 @@ namespace Coma.Common
 {
     public enum CommandType
     {
-        [Description("mov")]
-        Move
+        [Description("bld")]
+        Build
     }
 }

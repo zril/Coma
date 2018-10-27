@@ -20,14 +20,13 @@ namespace Coma.Common.Map.Item.Items
         public override void FromMessage(string message)
         {
             string[] splitargs = message.Split(',');
-            
-            Synergy = int.Parse(splitargs[1]);
-            Count = int.Parse(splitargs[2]);
+
+            Count = int.Parse(splitargs[1]);
         }
 
         public override string ToMessage()
         {
-            return string.Format("{0},{1},{2}", (int)ItemType, Synergy, Count);
+            return string.Format("{0},{1}", (int)ItemType, Count);
         }
 
         public override TileItem Clone()

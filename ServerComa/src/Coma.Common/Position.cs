@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace Coma.Server.Model
+namespace Coma.Common
 {
     public class Position
     {
-        public double X { get; set; }
-        public double Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
-        public Position(float x, float y)
+        public Position(int x, int y)
         {
             X = x;
             Y = y;
         }
-
     }
 }
