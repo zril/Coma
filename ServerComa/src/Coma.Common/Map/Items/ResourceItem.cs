@@ -29,5 +29,14 @@ namespace Coma.Common.Map.Item.Items
         {
             return string.Format("{0},{1},{2}", (int)ItemType, Synergy, Count);
         }
+
+        public override TileItem Clone()
+        {
+            ResourceItem clone = new ResourceItem(Capacity);
+            clone.Capacity = Capacity;
+            clone.Count = Count;
+
+            return clone;
+        }
     }
 }

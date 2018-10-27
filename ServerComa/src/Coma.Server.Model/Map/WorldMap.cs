@@ -25,7 +25,7 @@ namespace Coma.Server.Model.Map
 
                     if (j == 0)
                     {
-                        tiles[i, j].Item = TileItemInfo.Get(TileItemType.RESOURCE_COMMON);
+                        tiles[i, j].Item = TileItemInfo.GetClone(TileItemType.RESOURCE_COMMON);
                     }
                 }
             }

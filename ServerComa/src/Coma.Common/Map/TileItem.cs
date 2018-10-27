@@ -17,5 +17,7 @@ namespace Coma.Common.Map.Item
         public abstract string ToMessage();
 
         public abstract void FromMessage(string message);
+
+        public abstract TileItem Clone();
     }
 }
