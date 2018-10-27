@@ -49,7 +49,6 @@ public class TileView : MonoBehaviour {
             {
                 // Replace with constant TileItem
                 TileItem item = TileItemInfo.Get(currentTile.Item.ItemType);
-                Debug.Log(currentTile.Item.ItemType);
                 TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
                 TileItemRenderer.color = MainController.TileItemColors[(int)item.SynergyMode];
             }

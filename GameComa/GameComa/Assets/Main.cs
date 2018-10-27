@@ -14,6 +14,7 @@ public class Main : MonoBehaviour
 
     public GameObject TilePrefab;
     public Transform TileParent;
+    public int UpdateFrames;
     TileView[,] TileMap;
 
     // Use this for initialization
@@ -29,27 +30,6 @@ public class Main : MonoBehaviour
     void Update()
     {
 
-        GameObject player;
-
-        while (Global.Instance.PlayerMessages.Count > 0)
-        {
-            PlayerMessage playerMessage = Global.Instance.PlayerMessages.Dequeue();
-            if (players.ContainsKey(playerMessage.Id))
-            {
-                player = players[playerMessage.Id];
-                player.transform.position = new Vector3((float)playerMessage.X, (float)playerMessage.Y, 0);
-                Debug.Log("update " + playerMessage.Id + " " + playerMessage.X + " " + playerMessage.Y);
-            }
-            else
-            {
-                player = GameObject.Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Player"), new Vector3((float)playerMessage.X, (float)playerMessage.Y, 0), Quaternion.identity);
-                players.Add(playerMessage.Id, player);
-                player.GetComponent<Player>().playerId = playerMessage.Id;
-                Debug.Log("new " + playerMessage.Id + " " + playerMessage.X + " " + playerMessage.Y);
-            }
-        }
-
-
     }
 
     IEnumerator MessagesCoroutine()
@@ -59,9 +39,10 @@ public class Main : MonoBehaviour
             while (Global.Instance.MapMessages.Count > 0)
             {
                 MapMessage mapMessage = Global.Instance.MapMessages.Dequeue();
+                int counter = 0;
+                int maxElementsPerUpdate = mapMessage.TileMap.Length / UpdateFrames;
                 if (TileMap == null)
                 {
-                    // Remove current Tiles ?
 
                     TileMap = new TileView[mapMessage.TileMap.GetLength(0), mapMessage.TileMap.GetLength(1)];
                 }
@@ -70,6 +51,7 @@ public class Main : MonoBehaviour
                 {
                     for (int x = 0; x < TileMap.GetLength(0); x++)
                     {
+                        counter++;
                         if (TileMap[x, y] == null)
                         {
                             //Instantiate here
@@ -80,6 +62,11 @@ public class Main : MonoBehaviour
                         }
 
                         TileMap[x, y].UpdateTile(mapMessage.TileMap[x, y]);
+                        if(counter == maxElementsPerUpdate)
+                        {
+                            counter = 0;
+                            yield return null;
+                        }
                     }
                 }
             }

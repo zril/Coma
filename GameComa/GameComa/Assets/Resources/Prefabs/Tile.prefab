@@ -28,7 +28,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1281360199661788
 GameObject:
   m_ObjectHideFlags: 1
@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1962052328895722
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,21 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f2c73a806a62946bca472abfdb1bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TileItemObject: {fileID: 0}
-  TileSprites:
-  - {fileID: 0}
-  - {fileID: 21300000, guid: 88fe175aa6673944bb4fdc7591dee574, type: 3}
-  TileItemSprites:
-  - {fileID: 21300000, guid: 679bcae3a17f3a74991770a746b17419, type: 3}
-  - {fileID: 21300000, guid: 120ce67b08c1ea44c85fdbe54ed996f0, type: 3}
-  - {fileID: 21300000, guid: a68fac0d7d882834993b8edb8f8e19ed, type: 3}
-  - {fileID: 21300000, guid: a1c24419803b46341a647ef133b37793, type: 3}
-  - {fileID: 21300000, guid: fc5455dffda078a429e98ded0bda73a6, type: 3}
-  TileItemColors:
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 1, b: 0, a: 0}
-  - {r: 0, g: 0, b: 1, a: 0}
-  - {r: 1, g: 1, b: 0, a: 0}
+  MainController: {fileID: 0}
   TileItemRenderer: {fileID: 212630174134837314}
   TileRenderer: {fileID: 212813884899180462}
 --- !u!114 &114661574623994164
