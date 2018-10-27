@@ -14,7 +14,9 @@ public class Main : MonoBehaviour
     public List<Sprite> TileItemSprites;
     public List<Color> TileItemColors;
 
+
     public GameObject TilePrefab;
+    public GameObject TileUIPrefab;
     public Transform TileParent;
     public int UpdateFrames;
     TileView[,] TileMap;
