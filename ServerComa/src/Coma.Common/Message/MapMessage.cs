@@ -6,7 +6,7 @@ namespace Coma.Common.Message
     {
 
         #region public properties
-        Tile[,] map;
+        public Tile[,] TileMap;
 
         #endregion
 
@@ -14,7 +14,7 @@ namespace Coma.Common.Message
 
         public MapMessage(Tile[,] map) : this()
         {
-            this.map = map;
+            this.TileMap = map;
         }
 
         public MapMessage() : base("map") { }
@@ -43,18 +43,18 @@ namespace Coma.Common.Message
                 }
             }
 
-            this.map = map;
+            this.TileMap = map;
         }
 
         public override string ToString()
         {
-            string message = string.Format("{0},{1}", map.GetLength(0), map.GetLength(1));
+            string message = string.Format("{0},{1}", TileMap.GetLength(0), TileMap.GetLength(1));
 
-            for (int y = 0; y < map.GetLength(1); y++)
+            for (int y = 0; y < TileMap.GetLength(1); y++)
             {
-                for (int x = 0; x < map.GetLength(0); x++)
+                for (int x = 0; x < TileMap.GetLength(0); x++)
                 {
-                    message += "|" + map[x, y].ToMessage();
+                    message += "|" + TileMap[x, y].ToMessage();
                 }
             }
 
