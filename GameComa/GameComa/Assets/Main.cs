@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Coma.Common.Message;
 using Coma.Common.Map;
 using UnityEngine;
+using Coma.Common.Parameter;
+using Coma.Common.Map.Item;
 
 public class Main : MonoBehaviour
 {
@@ -24,6 +26,10 @@ public class Main : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1,1), TileItemType.BUILD_AREA));
+        }
 
 
         while (Global.Instance.MapMessages.Count > 0)

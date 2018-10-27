@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Direction.cs" />
     <Compile Include="Map\Items\NoItem.cs" />
+    <Compile Include="Map\Items\BuildAreaItem.cs" />
     <Compile Include="Map\Items\ResourceItem.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileItem.cs" />
@@ -60,8 +61,10 @@
     <Compile Include="Message\PlayerMessage.cs" />
     <Compile Include="Parameter\BaseParam.cs" />
     <Compile Include="CommandType.cs" />
+    <Compile Include="Parameter\BuildParam.cs" />
     <Compile Include="Parameter\MoveParam.cs" />
     <Compile Include="PlayerType.cs" />
+    <Compile Include="Position.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
       <AutoGen>True</AutoGen>

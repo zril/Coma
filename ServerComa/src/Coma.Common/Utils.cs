@@ -22,5 +22,17 @@ namespace Coma.Common
                 return true;
             }
         }
+        
+        public static string PosToString(Position pos)
+        {
+            return pos.X + "," + pos.Y;
+        }
+
+        public static Position PosFromString(string pos)
+        {
+            var split = pos.Split(',');
+
+            return new Position(int.Parse(split[0]), int.Parse(split[1]));
+        }
     }
 }

@@ -44,6 +44,10 @@ namespace Coma.Common.Map.Item
             type = TileItemType.RESOURCE_COMMON;
             items[(int)type] = new ResourceItem(100);
 
+            //RESSOURCE
+            type = TileItemType.BUILD_AREA;
+            items[(int)type] = new BuildAreaItem(5);
+
             //TRUC 2
             type = TileItemType.GENERATOR;
             //items[(int)type] =
