@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Coma.Server.Model.Map
+namespace Coma.Common.Map
 {
     public abstract class TileItem
     {
@@ -12,5 +12,7 @@ namespace Coma.Server.Model.Map
         bool Synergy { get; set; }
 
         public abstract string ToMessage();
+
+        public abstract void FromMessage();
     }
 }

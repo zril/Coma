@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Coma.Server.Model.Map
+namespace Coma.Common.Map
 {
     public class Tile
     {
@@ -13,5 +13,15 @@ namespace Coma.Server.Model.Map
         public int Influence { get; set; }
         bool Contructable { get; set; }
         bool Radiance { get; set; }
+
+        public string ToMessage()
+        {
+            return "";
+        }
+
+        public void FromMessage(String message)
+        {
+
+        }
     }
 }
