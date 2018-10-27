@@ -16,14 +16,14 @@ namespace Coma.Server.Model.Map
         public WorldMap(int size, PlayerType playerType)
         {
             tiles = new Tile[size, size];
-            for (int i = 0; i < size; i++)
+            for (int j = 0; j < size; j++)
             {
-                for (int j = 0; j < size; j++)
+                for (int i = 0; i < size; i++)
                 {
                     tiles[i, j] = new Tile();
                     tiles[i, j].Type = TileType.NORMAL;
 
-                    if (i == 0)
+                    if (j == 0)
                     {
                         tiles[i, j].Item = TileItemInfo.Get(TileItemType.RESOURCE_COMMON);
                     }

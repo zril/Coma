@@ -24,7 +24,7 @@ namespace Coma.Common.Message
         #region serialization
         public override void DeserializeArguments(string args)
         {
-            string[] messageTab = args.Split('|');
+            string[] messageTab = args.Split('#');
 
             string[] sizeTab = messageTab[0].Split(';');
             int width = int.Parse(sizeTab[0]);
@@ -54,7 +54,7 @@ namespace Coma.Common.Message
             {
                 for (int x = 0; x < TileMap.GetLength(0); x++)
                 {
-                    message += "|" + TileMap[x, y].ToMessage();
+                    message += "#" + TileMap[x, y].ToMessage();
                 }
             }
 
