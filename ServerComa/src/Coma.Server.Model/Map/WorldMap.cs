@@ -13,27 +13,46 @@ namespace Coma.Server.Model.Map
     {
         private Tile[,] tiles;
 
-        public WorldMap(int size, PlayerType playerType)
+        public WorldMap(int mapsize, PlayerType playerType)
         {
-            tiles = new Tile[size, size];
-            for (int j = 0; j < size; j++)
+            Random random = new Random();
+
+            tiles = new Tile[mapsize, mapsize];
+            for (int j = 0; j < mapsize; j++)
             {
-                for (int i = 0; i < size; i++)
+                for (int i = 0; i < mapsize; i++)
                 {
                     tiles[i, j] = new Tile();
                     tiles[i, j].Type = TileType.NORMAL;
-
-                    if (j == 0)
-                    {
-                        tiles[i, j].Item = TileItemInfo.GetClone(TileItemType.RESOURCE_COMMON);
-                    }
                 }
+            }
+
+            for (int n = 0; n < 8; n++)
+            {
+                AddResourcePatch(30, mapsize, random);
             }
         }
 
         public Tile[,] GetTiles()
         {
             return tiles;
+        }
+
+
+        private void AddResourcePatch(int size, int mapsize, Random random)
+        {
+            var patch = GenUtils.MazeGen(size, 5, false, 1, 1, 1, 1);
+
+            Position center = new Position(random.Next(mapsize), random.Next(mapsize));
+
+            foreach(Position pos in patch)
+            {
+                Position newpos = new Position(center.X + pos.X, center.Y + pos.Y);
+                if (newpos.IsInMap(mapsize))
+                {
+                    tiles[newpos.X, newpos.Y].Item = TileItemInfo.GetClone(TileItemType.RESOURCE_COMMON);
+                }
+            }
         }
     }
 }
