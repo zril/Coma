@@ -8,8 +8,11 @@ using Coma.Common.Map.Item;
 
 public class Main : MonoBehaviour
 {
-
     Dictionary<int, GameObject> players;
+
+    public List<Sprite> TileSprites;
+    public List<Sprite> TileItemSprites;
+    public List<Color> TileItemColors;
 
     public GameObject TilePrefab;
     public Transform TileParent;
@@ -21,6 +24,7 @@ public class Main : MonoBehaviour
         Global.Instance.InitClient();
         players = new Dictionary<int, GameObject>();
         TileMap = null;
+        StartCoroutine("MessagesCoroutine");
     }
 
     // Update is called once per frame
@@ -30,35 +34,6 @@ public class Main : MonoBehaviour
         {
             Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1,1), TileItemType.BUILD_AREA));
         }
-
-
-        while (Global.Instance.MapMessages.Count > 0)
-        {
-
-            MapMessage mapMessage = Global.Instance.MapMessages.Dequeue();
-            if (TileMap == null)
-            {
-                // Remove current Tiles ?
-
-                TileMap = new TileView[mapMessage.TileMap.GetLength(0), mapMessage.TileMap.GetLength(1)];
-            }
-
-            for (int y = 0; y < TileMap.GetLength(1); y++)
-            {
-                for (int x = 0; x < TileMap.GetLength(0); x++)
-                {
-                    if (TileMap[x, y] == null)
-                    {
-                        //Instantiate here
-                        GameObject tileObj = GameObject.Instantiate<GameObject>(TilePrefab, new Vector3(x, y, 0), Quaternion.identity, TileParent);
-                        TileMap[x, y] = tileObj.GetComponent<TileView>();
-                    }
-
-                    TileMap[x, y].UpdateTile(mapMessage.TileMap[x, y]);
-                }
-            }
-        }
-
 
         GameObject player;
 
@@ -81,6 +56,41 @@ public class Main : MonoBehaviour
         }
 
 
+    }
+
+    IEnumerator MessagesCoroutine()
+    {
+        while (true)
+        {
+            while (Global.Instance.MapMessages.Count > 0)
+            {
+                MapMessage mapMessage = Global.Instance.MapMessages.Dequeue();
+                if (TileMap == null)
+                {
+                    // Remove current Tiles ?
+
+                    TileMap = new TileView[mapMessage.TileMap.GetLength(0), mapMessage.TileMap.GetLength(1)];
+                }
+
+                for (int y = 0; y < TileMap.GetLength(1); y++)
+                {
+                    for (int x = 0; x < TileMap.GetLength(0); x++)
+                    {
+                        if (TileMap[x, y] == null)
+                        {
+                            //Instantiate here
+                            GameObject tileObj = GameObject.Instantiate<GameObject>(TilePrefab, new Vector3(x, y, 0), Quaternion.identity, TileParent);
+
+                            TileMap[x, y] = tileObj.GetComponent<TileView>();
+                            TileMap[x, y].MainController = this;
+                        }
+
+                        TileMap[x, y].UpdateTile(mapMessage.TileMap[x, y]);
+                    }
+                }
+            }
+            yield return null;
+        }
     }
 
     private void OnApplicationQuit()

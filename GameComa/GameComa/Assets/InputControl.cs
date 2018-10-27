@@ -38,12 +38,12 @@ public class InputControl : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            MainCamera.transform.position += new Vector3(0, -1) * Time.deltaTime * CameraSpeed;
+            MainCamera.transform.position += new Vector3(0, 1) * Time.deltaTime * CameraSpeed;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            MainCamera.transform.position += new Vector3(0, 1) * Time.deltaTime * CameraSpeed;
+            MainCamera.transform.position += new Vector3(0, -1) * Time.deltaTime * CameraSpeed;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
