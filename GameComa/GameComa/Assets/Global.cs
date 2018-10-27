@@ -27,9 +27,11 @@ class Global
     private Global()
     {
         PlayerMessages = new ConcurrentQueue<PlayerMessage>();
+        MapMessages = new ConcurrentQueue<MapMessage>();
     }
 
     public ConcurrentQueue<PlayerMessage> PlayerMessages { get; private set; }
+    public ConcurrentQueue<MapMessage> MapMessages { get; private set; }
 
     public ISocketClient Client { get; private set; }
     public int PlayerId { get; private set; }
@@ -38,10 +40,8 @@ class Global
 
     private int messageCount = 0;
     private int port = 4242;
-    //private string serverIp = "192.168.43.89";
     private string serverIp = "127.0.0.1";
     private string userName = "soul";
-    //private string userName = "jpiji2";
 
     public void InitClient()
     {
@@ -51,8 +51,6 @@ class Global
             Settings.Default.ClientPort = port + randomport;
             Client = new TcpSocketClient();
             string rep = Client.Connect(serverIp, 1337, MessageReceived, userName);
-            //string rep = Client.Connect("192.168.1.23", 1337, MessageReceived, "jpiji");
-            //string rep = Client.Connect("192.168.1.31", 1337, MessageReceived, "jpiji");
 
             Debug.Log("connect " + rep);
             PlayerId = Int32.Parse(rep.Split(':')[1]);
@@ -75,14 +73,20 @@ class Global
         messageCount++;
         Debug.Log("received " + message);
         
-
-        var prefix = "pla:";
-        if (message.StartsWith(prefix))
+        
+        if (message.StartsWith(MessagePrefix.PLAYER))
         {
             PlayerMessage playerMessage = new PlayerMessage();
-            playerMessage.DeserializeArguments(message.Remove(0, prefix.Length));
-
+            playerMessage.DeserializeArguments(message.Remove(0, MessagePrefix.PLAYER.Length));
             PlayerMessages.Enqueue(playerMessage);
+        }
+
+
+        if (message.StartsWith(MessagePrefix.MAP))
+        {
+            MapMessage mapMessage = new MapMessage();
+            mapMessage.DeserializeArguments(message.Remove(0, MessagePrefix.MAP.Length));
+            MapMessages.Enqueue(mapMessage);
         }
 
     }
