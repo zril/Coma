@@ -21,6 +21,16 @@ namespace Coma.Common.Map.Item
             return items[(int) type];
         }
 
+        public static TileItem GetClone(TileItemType type)
+        {
+            if (!init)
+            {
+                initInfo();
+                init = true;
+            }
+            return items[(int)type].Clone();
+        }
+
         private static void initInfo()
         {
             TileItemType type;

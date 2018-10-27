@@ -20,7 +20,7 @@ namespace Coma.Common.Map
             Influence = 0;
             Contructable = false;
             Radiance = false;
-            Item = TileItemInfo.Get(TileItemType.NONE);
+            Item = TileItemInfo.GetClone(TileItemType.NONE);
         }
 
         public void FromMessage(String message)
@@ -34,7 +34,7 @@ namespace Coma.Common.Map
 
             string[] itemargs = splitargs[4].Split(',');
             TileItemType itemtype = (TileItemType)(int.Parse(itemargs[0]));
-            Item = TileItemInfo.Get(itemtype);
+            Item = TileItemInfo.GetClone(itemtype);
             Item.FromMessage(splitargs[4]);
         }
 

@@ -22,5 +22,13 @@ namespace Coma.Common.Map.Item.Items
         {
             return string.Format("{0}", (int)ItemType);
         }
+
+        public override TileItem Clone()
+        {
+            NoItem clone = new NoItem();
+            clone.ItemType = ItemType;
+
+            return clone;
+        }
     }
 }
