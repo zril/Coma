@@ -26,7 +26,7 @@ public class TileUI : MonoBehaviour
     {
         if (item == null || item.ItemType == TileItemType.NONE)
         {
-            CategoryText.text = "";
+            CategoryText.text = "" + this.transform.position.x +"," + this.transform.position.y;
             CategorySynText.text = "";
         }
         else

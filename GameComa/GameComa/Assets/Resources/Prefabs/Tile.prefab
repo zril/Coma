@@ -114,7 +114,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1962052328895722
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,8 +253,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainController: {fileID: 0}
+  currentTileUI: {fileID: 0}
   TileItemRenderer: {fileID: 212630174134837314}
   TileRenderer: {fileID: 212813884899180462}
+  TileUICanvas: {fileID: 0}
 --- !u!114 &114661574623994164
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -17,15 +17,28 @@ public class TileView : MonoBehaviour {
     public SpriteRenderer TileRenderer;
 
     public Transform TileUICanvas;
+    
 	// Use this for initialization
 	void Start () {
-        TileUICanvas = GameObject.FindGameObjectWithTag("TileUICanvas").transform;
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+    }
+
+    private void OnBecameVisible()
+    {
+
+        UpdateUI();
+        currentTileUI.gameObject.SetActive(true);
+    }
+
+    private void OnBecameInvisible()
+    {
+        currentTileUI.gameObject.SetActive(false);
+    }
 
     public void UpdateTile(Tile tile)
     {
@@ -35,18 +48,13 @@ public class TileView : MonoBehaviour {
 
     public void UpdateDisplay()
     {
-        /*if (currentTileUI == null)
-        {
-            GameObject tileUIObj = Instantiate<GameObject>(MainController.TileUIPrefab, transform.localPosition * 100, Quaternion.identity, TileUICanvas);
-            currentTileUI = tileUIObj.GetComponent<TileUI>();
-        }*/
+        TileItem item = null;
 
         TileRenderer.sprite = MainController.TileSprites[(int)currentTile.Type];
         if(currentTile == null || currentTile.Type == TileType.NONE)
         {
             // Erase all
             TileItemRenderer.sprite = null;
-            //currentTileUI.UpdateDisplay(null);
         }
         else
         {
@@ -54,20 +62,37 @@ public class TileView : MonoBehaviour {
             {
                 // Remove Tileitem sprites
                 TileItemRenderer.sprite = null;
-                //currentTileUI.UpdateDisplay(null);
             }
             else
             {
                 // Replace with constant TileItem
-                TileItem item = TileItemInfo.Get(currentTile.Item.ItemType);
+                item = TileItemInfo.Get(currentTile.Item.ItemType);
                 TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
                 TileItemRenderer.color = MainController.TileItemColors[(int)item.SynergyMode];
-                //currentTileUI.UpdateDisplay(item);
             }
-
-
-
-
         }
+
+        if(TileItemRenderer.isVisible)
+        {
+            currentTileUI.UpdateDisplay(item);
+        }
+    }
+
+    void UpdateUI()
+    {
+        if (currentTileUI == null)
+        {
+            TileUICanvas = GameObject.FindGameObjectWithTag("TileUICanvas").transform;
+            GameObject tileUIObj = Instantiate<GameObject>(MainController.TileUIPrefab, transform.localPosition, Quaternion.identity, TileUICanvas);
+            currentTileUI = tileUIObj.GetComponent<TileUI>();
+        }
+
+        TileItem item = null;
+        if (currentTile != null && currentTile.Type != TileType.NONE && currentTile.Item != null && currentTile.Item.ItemType != TileItemType.NONE)
+        {
+            item = TileItemInfo.Get(currentTile.Item.ItemType);
+        }
+
+        currentTileUI.UpdateDisplay(item);
     }
 }
