@@ -51,6 +51,11 @@
     <Compile Include="Bank\Bank.cs" />
     <Compile Include="Entity\Player.cs" />
     <Compile Include="GameModel.cs" />
+    <Compile Include="Item\Fonction.cs" />
+    <Compile Include="Item\FonctionInfo.cs" />
+    <Compile Include="Item\Fonctions\NoFonction.cs" />
+    <Compile Include="Item\Fonctions\RadianceFonction.cs" />
+    <Compile Include="Item\TileItemFonctionInfo.cs" />
     <Compile Include="Map\GenUtils.cs" />
     <Compile Include="Map\WorldMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

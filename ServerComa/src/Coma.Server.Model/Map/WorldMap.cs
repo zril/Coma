@@ -31,6 +31,15 @@ namespace Coma.Server.Model.Map
             {
                 AddResourcePatch(30, mapsize, random);
             }
+
+            //Body
+            if (playerType == PlayerType.BODY)
+            {
+                tiles[0, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[mapsize - 1, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[mapsize - 1, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+            }
         }
 
         public Tile[,] GetTiles()

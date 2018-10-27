@@ -5,14 +5,11 @@ using System.Text;
 
 namespace Coma.Common.Map.Item.Items
 {
-    public class BuildAreaItem : TileItem
+    public class VirusItem : TileItem
     {
-        public int Radius { get; set; }
-
-        public BuildAreaItem(int radius)
+        public VirusItem()
         {
-            ItemType = TileItemType.BUILD_AREA;
-            Radius = radius;
+            ItemType = TileItemType.VIRUS;
         }
 
         public override void FromMessage(string message)
@@ -27,7 +24,7 @@ namespace Coma.Common.Map.Item.Items
 
         public override TileItem Clone()
         {
-            BuildAreaItem clone = new BuildAreaItem(Radius);
+            VirusItem clone = new VirusItem();
 
             return clone;
         }

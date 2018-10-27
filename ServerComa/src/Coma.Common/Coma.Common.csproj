@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Map\Items\VirusItem.cs" />
     <Compile Include="Map\Items\NoItem.cs" />
     <Compile Include="Map\Items\BuildAreaItem.cs" />
     <Compile Include="Map\Items\ResourceItem.cs" />

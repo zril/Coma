@@ -42,5 +42,19 @@ namespace Coma.Server.Model
             BodyMap = new WorldMap(mapSize, PlayerType.BODY);
             SoulMap = new WorldMap(mapSize, PlayerType.SOUL);
         }
+
+        public WorldMap GetMap(PlayerType type)
+        {
+            if (type == PlayerType.BODY)
+            {
+                return BodyMap;
+            }
+            if (type == PlayerType.SOUL)
+            {
+                return SoulMap;
+            }
+
+            return null;
+        }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Coma.Common.Map.Item.Items;
+using Coma.Server.Model.Item;
+using Coma.Server.Model.Item.Fonctions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +8,12 @@ using System.Text;
 
 namespace Coma.Common.Map.Item
 {
-    public class TileItemInfo
+    public class TileItemFonctionInfo
     {
-        private static TileItem[] items;
+        private static FonctionInfo[] items;
         private static bool init = false;
 
-        public static TileItem Get(TileItemType type)
+        public static FonctionInfo Get(TileItemType type)
         {
             if (!init)
             {
@@ -21,36 +23,27 @@ namespace Coma.Common.Map.Item
             return items[(int) type];
         }
 
-        public static TileItem GetClone(TileItemType type)
-        {
-            if (!init)
-            {
-                initInfo();
-                init = true;
-            }
-            return items[(int)type].Clone();
-        }
-
         private static void initInfo()
         {
             TileItemType type;
-            items = new TileItem[999];
+            items = new FonctionInfo[999];
 
             //NONE
             type = TileItemType.NONE;
-            items[(int)type] = new NoItem();
+            items[(int)type] = new FonctionInfo();
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON;
-            items[(int)type] = new ResourceItem(100);
+            items[(int)type] = new FonctionInfo();
 
             //RESSOURCE
             type = TileItemType.BUILD_AREA;
-            items[(int)type] = new BuildAreaItem(5);
+            items[(int)type] = new FonctionInfo();
 
             //VIRUS
             type = TileItemType.VIRUS;
-            items[(int)type] = new VirusItem();
+            items[(int)type] = new FonctionInfo();
+            items[(int)type].MainFonction = new RadianceFonction(5, -30);
 
             //TRUC 2
             type = TileItemType.GENERATOR;
