@@ -40,8 +40,11 @@ namespace Coma.Server.Core.Module
                     }
                 }
             }
-            var viruspos = virusPosList[random.Next(virusPosList.Count)];
-            map.GetTiles()[viruspos.X, viruspos.Y].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+            if (virusPosList.Count > 0)
+            {
+                var viruspos = virusPosList[random.Next(virusPosList.Count)];
+                map.GetTiles()[viruspos.X, viruspos.Y].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+            }
         }
     }
 }

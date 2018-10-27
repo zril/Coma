@@ -9,15 +9,15 @@ namespace Coma.Server.Model
     public class Bank
     {
         public int Cells { get; set; }
-        public int Nutrient { get; set; }
+        public int Nutrients { get; set; }
         public int Thoughts { get; set; }
         public int Ideas { get; set; }
 
         public Bank()
         {
-            Cells = 0;
-            Nutrient = 0;
-            Thoughts = 0;
+            Cells = 100;
+            Nutrients = 0;
+            Thoughts = 100;
             Ideas = 0;
         }
     }

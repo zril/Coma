@@ -51,6 +51,7 @@
     <Compile Include="Bank\Bank.cs" />
     <Compile Include="Entity\Player.cs" />
     <Compile Include="GameModel.cs" />
+    <Compile Include="Item\Fonctions\GeneratorFunction.cs" />
     <Compile Include="Item\Function.cs" />
     <Compile Include="Item\FunctionInfo.cs" />
     <Compile Include="Item\Fonctions\NoFonction.cs" />

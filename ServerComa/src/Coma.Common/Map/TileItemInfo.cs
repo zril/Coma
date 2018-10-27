@@ -41,12 +41,44 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new NoItem();
 
             //RESSOURCE
-            type = TileItemType.RESOURCE_COMMON;
-            items[(int)type] = new ResourceItem(100);
+            type = TileItemType.RESOURCE_COMMON_BODY;
+            items[(int)type] = new ResourceBodyItem(100);
 
             //RESSOURCE
-            type = TileItemType.BUILD_AREA;
-            items[(int)type] = new BuildAreaItem();
+            type = TileItemType.RESOURCE_COMMON_SOUL;
+            items[(int)type] = new ResourceSoulItem(100);
+
+            //RESSOURCE
+            type = TileItemType.RESOURCE_RARE_BODY;
+            items[(int)type] = new ResourceBodyRareItem(100);
+
+            //RESSOURCE
+            type = TileItemType.RESOURCE_RARE_SOUL;
+            items[(int)type] = new ResourceSoulRareItem(100);
+
+            //BUILD
+            type = TileItemType.BUILD_AREA_BODY;
+            items[(int)type] = new BuildAreaBodyItem();
+
+            //BUILD
+            type = TileItemType.BUILD_AREA_SOUL;
+            items[(int)type] = new BuildAreaSoulItem();
+
+            //GENERATOR
+            type = TileItemType.GENERATOR_SOUL;
+            items[(int)type] = new GeneratorSoulItem();
+
+            //GENERATOR
+            type = TileItemType.GENERATOR_BODY;
+            items[(int)type] = new GeneratorBodyItem();
+
+            //RADIANCE
+            type = TileItemType.RADIANCE_AREA_BODY;
+            items[(int)type] = new RadianceAreaBodyItem();
+
+            //RADIANCE
+            type = TileItemType.RADIANCE_AREA_SOUL;
+            items[(int)type] = new RadianceAreaSoulItem();
 
             //VIRUS
             type = TileItemType.VIRUS;
@@ -73,7 +105,7 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new NightmareItem();
 
             //TRUC 2
-            type = TileItemType.GENERATOR;
+            //type = TileItemType.GENERATOR_BODY;
             //items[(int)type] =
         }
     }

@@ -35,7 +35,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1,1), TileItemType.BUILD_AREA));
+            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1,1), TileItemType.BUILD_AREA_BODY));
         }
 
     }

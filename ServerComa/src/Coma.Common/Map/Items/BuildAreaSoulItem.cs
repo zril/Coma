@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Coma.Common.Map.Item.Items
 {
-    public class BuildAreaItem : TileItem
+    public class BuildAreaSoulItem : TileItem
     {
-        public BuildAreaItem()
+        public BuildAreaSoulItem()
         {
-            ItemType = TileItemType.BUILD_AREA;
+            ItemType = TileItemType.BUILD_AREA_SOUL;
         }
 
         public override void FromMessage(string message)
@@ -24,7 +24,7 @@ namespace Coma.Common.Map.Item.Items
 
         public override TileItem Clone()
         {
-            BuildAreaItem clone = new BuildAreaItem();
+            BuildAreaSoulItem clone = new BuildAreaSoulItem();
 
             return clone;
         }

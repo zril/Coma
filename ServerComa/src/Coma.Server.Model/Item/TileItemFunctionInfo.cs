@@ -33,20 +33,57 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new FunctionInfo();
 
             //RESSOURCE
-            type = TileItemType.RESOURCE_COMMON;
+            type = TileItemType.RESOURCE_COMMON_BODY;
             items[(int)type] = new FunctionInfo();
 
             //RESSOURCE
-            type = TileItemType.BUILD_AREA;
+            type = TileItemType.RESOURCE_COMMON_SOUL;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new BuildAreaFunction(10);
+
+            //RESSOURCE
+            type = TileItemType.RESOURCE_RARE_BODY;
+            items[(int)type] = new FunctionInfo();
+
+            //RESSOURCE
+            type = TileItemType.RESOURCE_RARE_SOUL;
+            items[(int)type] = new FunctionInfo();
+
+            //BUILD AREA
+            type = TileItemType.BUILD_AREA_BODY;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new BuildAreaFunction(8);
+
+            //BUILD AREA
+            type = TileItemType.BUILD_AREA_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new BuildAreaFunction(8);
+
+            //GENERATOR
+            type = TileItemType.GENERATOR_BODY;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new GeneratorFunction(8, ResourceType.CELLS);
+
+            //GENERATOR
+            type = TileItemType.GENERATOR_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new GeneratorFunction(8, ResourceType.THOUGHTS);
+
+            //RADIANCE AREA
+            type = TileItemType.RADIANCE_AREA_BODY;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new RadianceFunction(8, 20);
+
+            //RADIANCE AREA
+            type = TileItemType.RADIANCE_AREA_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new RadianceFunction(8, 20);
 
             //VIRUS
             type = TileItemType.VIRUS;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(5, -30);
 
-            //VIRUS
+            //NIGHTMARE
             type = TileItemType.NIGHTMARE;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(10, -20);
@@ -74,7 +111,7 @@ namespace Coma.Common.Map.Item
             items[(int)type].MainFunction = new RadianceFunction(20, -50);
 
             //TRUC 2
-            type = TileItemType.GENERATOR;
+            //type = TileItemType.GENERATOR_BODY;
             //items[(int)type] =
         }
     }

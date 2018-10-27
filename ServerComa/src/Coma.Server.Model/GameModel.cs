@@ -37,10 +37,14 @@ namespace Coma.Server.Model
         public WorldMap BodyMap { get; set; }
         public WorldMap SoulMap { get; set; }
 
+        public Bank Bank { get; set; }
+
         private GameModel()
         {
             BodyMap = new WorldMap(mapSize, PlayerType.BODY);
             SoulMap = new WorldMap(mapSize, PlayerType.SOUL);
+
+            Bank = new Bank();
         }
 
         public WorldMap GetMap(PlayerType type)

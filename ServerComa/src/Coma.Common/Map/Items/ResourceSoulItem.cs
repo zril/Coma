@@ -5,14 +5,14 @@ using System.Text;
 
 namespace Coma.Common.Map.Item.Items
 {
-    public class ResourceItem : TileItem
+    public class ResourceSoulItem : TileItem
     {
         public int Capacity {get; set;}
         public int Count { get; set; }
 
-        public ResourceItem(int capacity)
+        public ResourceSoulItem(int capacity)
         {
-            ItemType = TileItemType.RESOURCE_COMMON;
+            ItemType = TileItemType.RESOURCE_COMMON_SOUL;
             Capacity = capacity;
             Count = capacity;
         }
@@ -31,7 +31,7 @@ namespace Coma.Common.Map.Item.Items
 
         public override TileItem Clone()
         {
-            ResourceItem clone = new ResourceItem(Capacity);
+            ResourceSoulItem clone = new ResourceSoulItem(Capacity);
             clone.Capacity = Capacity;
             clone.Count = Count;
 

@@ -44,15 +44,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Map\Items\RadianceAreaSoulItem.cs" />
+    <Compile Include="Map\Items\RadianceAreaBodyItem.cs" />
+    <Compile Include="Map\Items\GeneratorSoulItem.cs" />
+    <Compile Include="Map\Items\GeneratorBodyItem.cs" />
+    <Compile Include="Map\Items\BuildAreaSoulItem.cs" />
     <Compile Include="Map\Items\CorruptedFeelingItem.cs" />
     <Compile Include="Map\Items\NightmareItem.cs" />
     <Compile Include="Map\Items\FeelingItem.cs" />
     <Compile Include="Map\Items\CorruptedOrganItem.cs" />
     <Compile Include="Map\Items\OrganItem.cs" />
+    <Compile Include="Map\Items\ResourceSoulRareItem.cs" />
+    <Compile Include="Map\Items\ResourceBodyRareItem.cs" />
+    <Compile Include="Map\Items\ResourceBodyItem.cs" />
     <Compile Include="Map\Items\VirusItem.cs" />
     <Compile Include="Map\Items\NoItem.cs" />
-    <Compile Include="Map\Items\BuildAreaItem.cs" />
-    <Compile Include="Map\Items\ResourceItem.cs" />
+    <Compile Include="Map\Items\BuildAreaBodyItem.cs" />
+    <Compile Include="Map\Items\ResourceSoulItem.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileItem.cs" />
     <Compile Include="Map\TileItemCategory.cs" />
@@ -69,6 +77,7 @@
     <Compile Include="CommandType.cs" />
     <Compile Include="Parameter\BuildParam.cs" />
     <Compile Include="Parameter\MoveParam.cs" />
+    <Compile Include="ResourceType.cs" />
     <Compile Include="PlayerType.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

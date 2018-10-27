@@ -26,17 +26,21 @@ namespace Coma.Server.Model.Map
                     tiles[i, j].Type = TileType.NORMAL;
                 }
             }
-
-            for (int n = 0; n < 8; n++)
-            {
-                AddResourcePatch(30, mapsize, random);
-            }
-
-
+            
 
             //Body
             if (playerType == PlayerType.BODY)
             {
+
+                for (int n = 0; n < 12; n++)
+                {
+                    AddResourcePatch(30, mapsize, random, TileItemType.RESOURCE_COMMON_BODY);
+                }
+
+                for (int n = 0; n < 5; n++)
+                {
+                    AddResourcePatch(20, mapsize, random, TileItemType.RESOURCE_RARE_BODY);
+                }
 
                 var startX = random.Next(mapsize / 4);
                 var startY = random.Next(mapsize / 4);
@@ -52,11 +56,22 @@ namespace Coma.Server.Model.Map
                 var endY = startY + 50;
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
+
             }
 
             //Soul
             if (playerType == PlayerType.SOUL)
             {
+                for (int n = 0; n < 12; n++)
+                {
+                    AddResourcePatch(30, mapsize, random, TileItemType.RESOURCE_COMMON_SOUL);
+                }
+
+                for (int n = 0; n < 5; n++)
+                {
+                    AddResourcePatch(20, mapsize, random, TileItemType.RESOURCE_RARE_SOUL);
+                }
+
                 var startX = random.Next(mapsize / 4);
                 var startY = random.Next(mapsize / 4);
 
@@ -75,7 +90,7 @@ namespace Coma.Server.Model.Map
         }
 
 
-        private void AddResourcePatch(int size, int mapsize, Random random)
+        private void AddResourcePatch(int size, int mapsize, Random random, TileItemType tileType)
         {
             var patch = GenUtils.MazeGen(size, 5, false, 1, 1, 1, 1);
 
@@ -86,7 +101,7 @@ namespace Coma.Server.Model.Map
                 Position newpos = new Position(center.X + pos.X, center.Y + pos.Y);
                 if (newpos.IsInMap(mapsize))
                 {
-                    tiles[newpos.X, newpos.Y].Item = TileItemInfo.GetClone(TileItemType.RESOURCE_COMMON);
+                    tiles[newpos.X, newpos.Y].Item = TileItemInfo.GetClone(tileType);
                 }
             }
         }
