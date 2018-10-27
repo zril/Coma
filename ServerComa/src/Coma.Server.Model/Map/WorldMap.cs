@@ -32,13 +32,40 @@ namespace Coma.Server.Model.Map
                 AddResourcePatch(30, mapsize, random);
             }
 
+
+
             //Body
             if (playerType == PlayerType.BODY)
             {
+
+                var startX = random.Next(mapsize / 4);
+                var startY = random.Next(mapsize / 4);
+
                 tiles[0, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[mapsize - 1, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[mapsize - 1, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                
+                tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.ORGAN);
+
+                var endX = startX + 50;
+                var endY = startY + 50;
+
+                tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
+            }
+
+            //Soul
+            if (playerType == PlayerType.SOUL)
+            {
+                var startX = random.Next(mapsize / 4);
+                var startY = random.Next(mapsize / 4);
+
+                tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.FEELING);
+
+                var endX = startX + 50;
+                var endY = startY + 50;
+
+                tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
             }
         }
 

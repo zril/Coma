@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Coma.Server.Model.Item
 {
-    public abstract class Fonction
+    public abstract class Function
     {
         public abstract void Execute(PlayerType mapType, Position pos);
     }

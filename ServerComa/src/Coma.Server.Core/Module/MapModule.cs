@@ -22,6 +22,7 @@ namespace Coma.Server.Core.Module
         {
             if (GameModel.Instance.BodyPlayer != null)
             {
+                
                 UpdateTiles(PlayerType.BODY);
                 MapMessage bodyMessage = new MapMessage(GameModel.Instance.BodyMap.GetTiles());
                 GlobalServer.Instance.SendMessage(GameModel.Instance.BodyPlayer.Id, bodyMessage.ToString());
@@ -39,6 +40,17 @@ namespace Coma.Server.Core.Module
         {
             var map = GameModel.Instance.GetMap(mapType);
 
+            //reset
+            for (int j = 0; j < map.GetTiles().GetLength(1); j++)
+            {
+                for (int i = 0; i < map.GetTiles().GetLength(0); i++)
+                {
+                    map.GetTiles()[i, j].Influence = 0;
+                    map.GetTiles()[i, j].Contructable = false;
+                }
+            }
+
+            //execution fonctions
             for (int j = 0; j < map.GetTiles().GetLength(1); j++)
             {
                 for (int i = 0; i < map.GetTiles().GetLength(0); i++)
@@ -46,8 +58,11 @@ namespace Coma.Server.Core.Module
                     var tmppos = new Position(i, j);
                     if (tmppos.IsInMap(map.GetTiles().GetLength(1)))
                     {
-                        FonctionInfo fonctions = TileItemFonctionInfo.Get(map.GetTiles()[i, j].Item.ItemType);
-                        fonctions.MainFonction.Execute(mapType, tmppos);
+                        FunctionInfo fonctions = TileItemFunctionInfo.Get(map.GetTiles()[i, j].Item.ItemType);
+                        fonctions.MainFunction.Execute(mapType, tmppos);
+
+                        //todo condition
+                        fonctions.SynergyFunction.Execute(mapType, tmppos);
                     }
                 }
             }

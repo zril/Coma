@@ -7,12 +7,9 @@ namespace Coma.Common.Map.Item.Items
 {
     public class BuildAreaItem : TileItem
     {
-        public int Radius { get; set; }
-
-        public BuildAreaItem(int radius)
+        public BuildAreaItem()
         {
             ItemType = TileItemType.BUILD_AREA;
-            Radius = radius;
         }
 
         public override void FromMessage(string message)
@@ -22,12 +19,12 @@ namespace Coma.Common.Map.Item.Items
 
         public override string ToMessage()
         {
-            return string.Format("{0},{1}", (int)ItemType);
+            return string.Format("{0}", (int)ItemType);
         }
 
         public override TileItem Clone()
         {
-            BuildAreaItem clone = new BuildAreaItem(Radius);
+            BuildAreaItem clone = new BuildAreaItem();
 
             return clone;
         }

@@ -16,8 +16,11 @@ namespace Coma.Common.Map.Item
         RESOURCE_BODY,
         RESOURCE_SOUL,
         OBSTACLE,
-        OBJECTIVE,
+        ORGAN,
+        CORRUPTED_ORGAN,
+        FEELING,
+        CORRUPTED_FEELING,
         VIRUS,
-        DEPRESSION
+        NIGHTMARE
     }
 }

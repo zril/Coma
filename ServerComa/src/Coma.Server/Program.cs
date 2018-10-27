@@ -161,6 +161,8 @@ namespace Coma.Server
         private static void StartModules()
         {
             MODULES.Add(new MapModule());
+            MODULES.Add(new VirusModule());
+            MODULES.Add(new NightmareModule());
 
             foreach (IModule mod in MODULES)
             {

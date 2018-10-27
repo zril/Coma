@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Coma.Common.Map.Item.Items
 {
-    public class VirusItem : TileItem
+    public class FeelingItem : TileItem
     {
-        public VirusItem()
+        public FeelingItem()
         {
             ItemType = TileItemType.VIRUS;
         }
@@ -24,7 +24,7 @@ namespace Coma.Common.Map.Item.Items
 
         public override TileItem Clone()
         {
-            VirusItem clone = new VirusItem();
+            FeelingItem clone = new FeelingItem();
 
             return clone;
         }

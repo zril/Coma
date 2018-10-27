@@ -46,11 +46,31 @@ namespace Coma.Common.Map.Item
 
             //RESSOURCE
             type = TileItemType.BUILD_AREA;
-            items[(int)type] = new BuildAreaItem(5);
+            items[(int)type] = new BuildAreaItem();
 
             //VIRUS
             type = TileItemType.VIRUS;
             items[(int)type] = new VirusItem();
+
+            //NIGHTMARE
+            type = TileItemType.NIGHTMARE;
+            items[(int)type] = new NightmareItem();
+
+            //ORGAN
+            type = TileItemType.ORGAN;
+            items[(int)type] = new NightmareItem();
+
+            //CORRUPTED ORGAN
+            type = TileItemType.CORRUPTED_ORGAN;
+            items[(int)type] = new NightmareItem();
+
+            //FEELING
+            type = TileItemType.FEELING;
+            items[(int)type] = new NightmareItem();
+
+            //CORRUPTED FEELING
+            type = TileItemType.CORRUPTED_FEELING;
+            items[(int)type] = new NightmareItem();
 
             //TRUC 2
             type = TileItemType.GENERATOR;

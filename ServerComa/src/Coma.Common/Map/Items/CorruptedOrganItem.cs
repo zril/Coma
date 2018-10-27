@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Coma.Common.Map.Item.Items
 {
-    public class VirusItem : TileItem
+    public class CorruptedOrganItem : TileItem
     {
-        public VirusItem()
+        public CorruptedOrganItem()
         {
-            ItemType = TileItemType.VIRUS;
+            ItemType = TileItemType.CORRUPTED_ORGAN;
         }
 
         public override void FromMessage(string message)
@@ -24,7 +24,7 @@ namespace Coma.Common.Map.Item.Items
 
         public override TileItem Clone()
         {
-            VirusItem clone = new VirusItem();
+            CorruptedOrganItem clone = new CorruptedOrganItem();
 
             return clone;
         }

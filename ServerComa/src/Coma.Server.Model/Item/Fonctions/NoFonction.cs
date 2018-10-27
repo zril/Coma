@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Coma.Server.Model.Item.Fonctions
 {
-    public class NoFonction : Fonction
+    public class NoFonction : Function
     {
 
         public NoFonction()

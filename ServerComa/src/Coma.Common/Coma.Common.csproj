@@ -44,6 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Map\Items\CorruptedFeelingItem.cs" />
+    <Compile Include="Map\Items\NightmareItem.cs" />
+    <Compile Include="Map\Items\FeelingItem.cs" />
+    <Compile Include="Map\Items\CorruptedOrganItem.cs" />
+    <Compile Include="Map\Items\OrganItem.cs" />
     <Compile Include="Map\Items\VirusItem.cs" />
     <Compile Include="Map\Items\NoItem.cs" />
     <Compile Include="Map\Items\BuildAreaItem.cs" />

@@ -56,13 +56,14 @@ namespace Coma.Server.Core.Module
 
                 var elapsed = DateTime.Now - LastUpdate;
                 this.LastUpdate = DateTime.Now;
-                try
+                Update(elapsed);
+                /*try
                 {
                     Update(elapsed);
                 } catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                }
+                }*/
                 updateTime = (int)(DateTime.Now - LastUpdate).TotalMilliseconds;
             }
         }

@@ -11,8 +11,8 @@ namespace Coma.Common.Map
     {
         public TileType Type { get; set; }
         public int Influence { get; set; }
-        bool Contructable { get; set; }
-        bool Radiance { get; set; }
+        public bool Contructable { get; set; }
+        public bool Radiance { get; set; }
         public TileItem Item { get; set; }
 
         public Tile()

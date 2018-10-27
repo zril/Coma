@@ -7,15 +7,13 @@ using System.Text;
 
 namespace Coma.Server.Model.Item.Fonctions
 {
-    public class RadianceFonction : Fonction
+    public class BuildAreaFunction : Function
     {
         public int Radius { get; set; }
-        public int Power { get; set; }
 
-        public RadianceFonction(int radius, int power)
+        public BuildAreaFunction(int radius)
         {
             Radius = radius;
-            Power = power;
         }
 
         public override void Execute(PlayerType mapType, Position pos)
@@ -32,8 +30,7 @@ namespace Coma.Server.Model.Item.Fonctions
                         var dist = tmpPos.Dist(pos);
                         if (dist <= Radius)
                         {
-                            var power = Power - (Power / Radius) * dist;
-                            map.GetTiles()[tmpPos.X, tmpPos.Y].Influence += power;
+                            map.GetTiles()[tmpPos.X, tmpPos.Y].Contructable = true;
                         }
                     }
                 }
