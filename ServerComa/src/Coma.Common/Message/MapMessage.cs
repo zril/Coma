@@ -20,7 +20,7 @@ namespace Coma.Common.Message
         public MapMessage() : base("map") { }
 
         #endregion
-
+        
         #region serialization
         public override void DeserializeArguments(string args)
         {

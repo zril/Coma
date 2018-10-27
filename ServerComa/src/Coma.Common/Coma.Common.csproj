@@ -48,6 +48,7 @@
     <Compile Include="Map\TileItem.cs" />
     <Compile Include="Map\TileType.cs" />
     <Compile Include="Message\BaseMessage.cs" />
+    <Compile Include="Message\MapMessage.cs" />
     <Compile Include="Message\PlayerMessage.cs" />
     <Compile Include="Parameter\BaseParam.cs" />
     <Compile Include="CommandType.cs" />
