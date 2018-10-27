@@ -44,8 +44,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Map\Items\ResourceItem.cs" />
     <Compile Include="Map\Tile.cs" />
     <Compile Include="Map\TileItem.cs" />
+    <Compile Include="Map\TileItemCategory.cs" />
+    <Compile Include="Map\TileItemFonction.cs" />
+    <Compile Include="Map\TileItemInfo.cs" />
+    <Compile Include="Map\TileItemSynergyMode.cs" />
+    <Compile Include="Map\TileItemType.cs" />
     <Compile Include="Map\TileType.cs" />
     <Compile Include="Message\BaseMessage.cs" />
     <Compile Include="Message\MapMessage.cs" />
@@ -53,6 +59,7 @@
     <Compile Include="Parameter\BaseParam.cs" />
     <Compile Include="CommandType.cs" />
     <Compile Include="Parameter\MoveParam.cs" />
+    <Compile Include="PlayerType.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
       <AutoGen>True</AutoGen>

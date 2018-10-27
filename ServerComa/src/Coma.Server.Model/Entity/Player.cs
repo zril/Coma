@@ -1,4 +1,5 @@
 ﻿using Anjril.Common.Network;
+using Coma.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,16 +27,19 @@ namespace Coma.Server.Model.Entity
 
         public Position Position { get; private set; }
 
+        public PlayerType Type { get; set; }
+
         #endregion
 
         #region constructor
 
-        public Player(string name, IRemoteConnection remote)
+        public Player(string name, IRemoteConnection remote, PlayerType type)
         {
             Name = name;
             Id = sequenceId++;
             RemoteConnection = remote;
 
+            Type = type;
             Position = new Position(0, 0);
             MovingUp = false;
             MovingDown = false;
