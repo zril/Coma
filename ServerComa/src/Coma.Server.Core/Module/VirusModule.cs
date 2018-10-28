@@ -17,7 +17,7 @@ namespace Coma.Server.Core.Module
         private Random random;
 
         public VirusModule()
-            : base(10000)
+            : base(12000)
         {
             random = new Random();
         }
@@ -26,7 +26,10 @@ namespace Coma.Server.Core.Module
         {
             if (GameModel.Instance.BodyPlayer != null)
             {
-                AddVirus(GameModel.Instance.GetMap(PlayerType.BODY));
+                for (int n = 0; n < 3; n++)
+                {
+                    AddVirus(GameModel.Instance.GetMap(PlayerType.BODY));
+                } 
             }
         }
 
