@@ -63,6 +63,27 @@ public class InputControl : MonoBehaviour
             MainCamera.transform.position += new Vector3(1, 0) * Time.deltaTime * CameraSpeed;
         }
 
+        if(Input.mouseScrollDelta.y > 0 && MainCamera.orthographicSize > 4)
+        {
+            MainCamera.orthographicSize -= 1;
+            CameraSpeed -= 1f;
+            if (MainCamera.orthographicSize == 4 && !MainController.IsTileUIVisible)
+            {
+                MainController.EnableTileUI();
+            }
+        }
+
+        if (Input.mouseScrollDelta.y < 0 && MainCamera.orthographicSize < 25)
+        {
+            MainCamera.orthographicSize += 1;
+            CameraSpeed += 1f;
+            if (MainController.IsTileUIVisible)
+            {
+                MainController.DisableTileUI();
+            }
+        }
+
+
         if (SelectedBuildItem != TileItemType.NONE)
         {
             Vector3 pos = Input.mousePosition;

@@ -22,6 +22,7 @@ public class Main : MonoBehaviour
     public int UpdateFrames;
     public TileView[,] TileMap;
 
+    public bool IsTileUIVisible = true;
     // Use this for initialization
     void Start()
     {
@@ -93,6 +94,24 @@ public class Main : MonoBehaviour
             {
                 //Add temp construct image
             }
+        }
+    }
+
+    public void DisableTileUI()
+    {
+        IsTileUIVisible = false;
+        foreach(var tile in TileMap)
+        {
+            tile.DisableTileUI();
+        }
+    }
+
+    public void EnableTileUI()
+    {
+        IsTileUIVisible = true;
+        foreach (var tile in TileMap)
+        {
+            tile.EnableTileUI();
         }
     }
 
