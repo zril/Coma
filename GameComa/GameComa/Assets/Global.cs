@@ -27,9 +27,13 @@ class Global
     private Global()
     {
         MapMessages = new ConcurrentQueue<MapMessage>();
+        BankMessages = new ConcurrentQueue<BankMessage>();
+        CameraMessages = new ConcurrentQueue<CameraMessage>();
     }
-    
+
     public ConcurrentQueue<MapMessage> MapMessages { get; private set; }
+    public ConcurrentQueue<BankMessage> BankMessages { get; private set; }
+    public ConcurrentQueue<CameraMessage> CameraMessages { get; private set; }
 
     public ISocketClient Client { get; private set; }
     public int PlayerId { get; private set; }
@@ -78,6 +82,18 @@ class Global
             MapMessage mapMessage = new MapMessage();
             mapMessage.DeserializeArguments(message.Remove(0, MessagePrefix.MAP.Length));
             MapMessages.Enqueue(mapMessage);
+        }
+        else if (message.StartsWith(MessagePrefix.BANK))
+        {
+            BankMessage bankMessage = new BankMessage();
+            bankMessage.DeserializeArguments(message.Remove(0, MessagePrefix.BANK.Length));
+            BankMessages.Enqueue(bankMessage);
+        }
+        else if(message.StartsWith(MessagePrefix.CAMERA))
+        {
+            CameraMessage camMessage = new CameraMessage();
+            camMessage.DeserializeArguments(message.Remove(0, MessagePrefix.CAMERA.Length));
+            CameraMessages.Enqueue(camMessage);
         }
 
     }

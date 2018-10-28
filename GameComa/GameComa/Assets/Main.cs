@@ -23,13 +23,19 @@ public class Main : MonoBehaviour
     public TileView[,] TileMap;
 
     public bool IsTileUIVisible = true;
+
+    public int BankCells = 0;
+    public int BankNutrients = 0;
+    public int BankThoughts = 0;
+    public int BankIdeas = 0;
+
     // Use this for initialization
     void Start()
     {
         Global.Instance.InitClient(PlayerIsBody);
         players = new Dictionary<int, GameObject>();
         TileMap = null;
-        StartCoroutine("MessagesCoroutine");
+        StartCoroutine("MapMessagesCoroutine");
     }
 
     // Update is called once per frame
@@ -42,7 +48,23 @@ public class Main : MonoBehaviour
 
     }
 
-    IEnumerator MessagesCoroutine()
+
+
+    IEnumerator GeneralMessagesCoroutine()
+    {
+        while (true)
+        {
+            while (Global.Instance.BankMessages.Count > 0)
+            {
+
+                BankMessage bankMessage = Global.Instance.BankMessages.Dequeue();
+                
+            }
+                yield return null;
+        }
+    }
+
+    IEnumerator MapMessagesCoroutine()
     {
         while (true)
         {
@@ -115,6 +137,14 @@ public class Main : MonoBehaviour
             if (tile != null)
                 tile.EnableTileUI();
         }
+    }
+
+    private void SetBank(int cells, int nutrients, int thoughts, int ideas)
+    {
+        BankCells = cells;
+        BankNutrients = nutrients;
+        BankThoughts = thoughts;
+        BankIdeas = ideas;
     }
 
     private void OnApplicationQuit()
