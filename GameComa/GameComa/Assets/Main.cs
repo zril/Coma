@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
     public int UpdateFrames;
     public TileView[,] TileMap;
 
-    public bool IsTileUIVisible = true;
+    public bool IsTileUIVisible = false;
 
     private GlobalUI globalUI;
 

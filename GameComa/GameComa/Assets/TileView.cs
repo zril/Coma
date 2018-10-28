@@ -139,7 +139,7 @@ public class TileView : MonoBehaviour {
             TileInfluValueRenderer.color = influValueColor;
         }
 
-        if(TileItemRenderer.isVisible && currentTileUI != null)
+        if(TileItemRenderer.isVisible && currentTileUI != null && MainController.IsTileUIVisible)
         {
             currentTileUI.UpdateDisplay(item);
         }
