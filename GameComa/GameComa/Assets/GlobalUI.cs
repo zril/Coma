@@ -62,7 +62,7 @@ public class GlobalUI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        string BodyBank = "€ " + ("" + DisplayBankCells).PadLeft(5, '0') + "   -   $ " + ("" + DisplayBankNutrients).PadLeft(5, '0');
+        string BodyBank = "$ " + ("" + DisplayBankCells).PadLeft(5, '0') + "   -   € " + ("" + DisplayBankNutrients).PadLeft(5, '0');
         string SoulBank = ("" + DisplayBankIdeas).PadLeft(5, '0') + " ¤   -   " + ("" + DisplayBankThoughts).PadLeft(5, '0') + " £";
         BodyBankText.text = BodyBank;
         SoulBankText.text = SoulBank;

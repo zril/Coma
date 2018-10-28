@@ -64,8 +64,8 @@ public class BuildButton : MonoBehaviour
         if (Item.CostNutrients > 0)
             cost += Item.CostNutrients + "€   ";
 
-        if (Item.CostThoughts > 0)
-            cost += Item.CostThoughts + "&";
+        if (Item.CostIdeas > 0)
+            cost += Item.CostIdeas + "&";
 
         Text.text = cost.Trim();
     }
