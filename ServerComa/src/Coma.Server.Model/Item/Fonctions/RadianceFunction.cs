@@ -30,7 +30,11 @@ namespace Coma.Server.Model.Item.Fonctions
 
         public override void Execute(PlayerType mapType, Position pos)
         {
+
             WorldMap map = GameModel.Instance.GetMap(mapType);
+            var bonus = false;
+            var powertmp = Power;
+            var radiustmp = Radius;
             if (Other)
             {
                 if (mapType == PlayerType.BODY)
@@ -41,18 +45,31 @@ namespace Coma.Server.Model.Item.Fonctions
                     map = GameModel.Instance.GetMap(PlayerType.BODY);
                 }
             }
-
-            for (int i = pos.X - Radius; i <= pos.X + Radius; i++)
+            
+            if (map.GetTiles()[pos.X, pos.Y].Item.ItemType == TileItemType.VIRUS || map.GetTiles()[pos.X, pos.Y].Item.ItemType == TileItemType.NIGHTMARE)
             {
-                for (int j = pos.Y - Radius; j <= pos.Y + Radius; j++)
+                bonus = true;
+            }
+
+            if (bonus && !Other)
+            {
+                powertmp = Power + GameModel.Instance.EnemyPowerBonus * Math.Sign(Power);
+                radiustmp = Radius + GameModel.Instance.EnemyRadiusBonus;
+            }
+
+            //champion de la bidouille
+
+            for (int i = pos.X - radiustmp; i <= pos.X + radiustmp; i++)
+            {
+                for (int j = pos.Y - radiustmp; j <= pos.Y + radiustmp; j++)
                 {
                     var tmpPos = new Position(i, j);
                     if (tmpPos.IsInMap(map.GetTiles().GetLength(0)))
                     {
                         var dist = tmpPos.Dist(pos);
-                        if (dist <= Radius && map.GetTiles()[tmpPos.X, tmpPos.Y].Item.ItemType != TileItemType.OBSTACLE)
+                        if (dist <= radiustmp && map.GetTiles()[tmpPos.X, tmpPos.Y].Item.ItemType != TileItemType.OBSTACLE)
                         {
-                            var power = Power - (Power / Radius) * dist;
+                            var power = powertmp - (powertmp / radiustmp) * dist;
                             map.GetTiles()[tmpPos.X, tmpPos.Y].Influence += power;
 
                             if (power > 0)

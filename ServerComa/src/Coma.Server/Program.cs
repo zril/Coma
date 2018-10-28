@@ -165,6 +165,8 @@ namespace Coma.Server
             MODULES.Add(new MapModule());
             MODULES.Add(new VirusModule());
             MODULES.Add(new NightmareModule());
+            MODULES.Add(new EnemyPowerModule());
+            MODULES.Add(new EnemyRadiusModule());
 
             foreach (IModule mod in MODULES)
             {

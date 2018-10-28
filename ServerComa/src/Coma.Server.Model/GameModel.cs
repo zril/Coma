@@ -40,12 +40,18 @@ namespace Coma.Server.Model
         public WorldMap BodyMap { get; set; }
         public WorldMap SoulMap { get; set; }
 
+        public int EnemyPowerBonus { get; set; }
+        public int EnemyRadiusBonus { get; set; }
+
         public Bank Bank { get; set; }
 
         private GameModel()
         {
             BodyMap = new WorldMap(mapSize, PlayerType.BODY);
             SoulMap = new WorldMap(mapSize, PlayerType.SOUL);
+
+            EnemyPowerBonus = 0;
+            EnemyRadiusBonus = 0;
 
             Bank = new Bank();
         }

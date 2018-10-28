@@ -54,8 +54,10 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\BuildCommand.cs" />
     <Compile Include="Module\BaseModule.cs" />
+    <Compile Include="Module\EnemyRadiusModule.cs" />
     <Compile Include="Module\IModule.cs" />
     <Compile Include="Module\NightmareModule.cs" />
+    <Compile Include="Module\EnemyPowerModule.cs" />
     <Compile Include="Module\VirusModule.cs" />
     <Compile Include="Module\MapModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
