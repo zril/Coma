@@ -93,8 +93,8 @@ namespace Coma.Server.Core.Module
                         fonctions.SynergyFunction.Execute(mapType, tmppos);
 
                         //maintenance
-                        GameModel.Instance.Bank.Cells -= map.GetTiles()[i, j].Item.MaintenanceCellCostRate;
-                        GameModel.Instance.Bank.Thoughts -= map.GetTiles()[i, j].Item.MaintenanceThoughtCostRate;
+                        GameModel.Instance.Bank.Cells -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceCellCostRate;
+                        GameModel.Instance.Bank.Thoughts -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceThoughtCostRate;
                     }
                 }
             }
@@ -105,6 +105,10 @@ namespace Coma.Server.Core.Module
                 {
                     if (map.GetTiles()[i, j].Influence < 0)
                     {
+                        //toi pas construire
+                        map.GetTiles()[i, j].Contructable = false;
+
+                        //
                         switch (map.GetTiles()[i, j].Item.ItemType)
                         {
                             case TileItemType.GENERATOR_SOUL:
@@ -116,6 +120,31 @@ namespace Coma.Server.Core.Module
                             case TileItemType.RADIANCE_AREA_BODY:
                             case TileItemType.RADIANCE_AREA_SOUL:
                                 map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                                break;
+                            case TileItemType.ORGAN:
+                                map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
+                                break;
+                            case TileItemType.FEELING:
+                                map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+
+                    if (map.GetTiles()[i, j].Influence > 0)
+                    {
+                        switch (map.GetTiles()[i, j].Item.ItemType)
+                        {
+                            case TileItemType.VIRUS:
+                            case TileItemType.NIGHTMARE:
+                                map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                                break;
+                            case TileItemType.CORRUPTED_ORGAN:
+                                map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.ORGAN);
+                                break;
+                            case TileItemType.CORRUPTED_FEELING:
+                                map.GetTiles()[i, j].Item = TileItemInfo.GetClone(TileItemType.FEELING);
                                 break;
                             default:
                                 break;
