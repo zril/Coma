@@ -26,11 +26,9 @@ class Global
 
     private Global()
     {
-        PlayerMessages = new ConcurrentQueue<PlayerMessage>();
         MapMessages = new ConcurrentQueue<MapMessage>();
     }
-
-    public ConcurrentQueue<PlayerMessage> PlayerMessages { get; private set; }
+    
     public ConcurrentQueue<MapMessage> MapMessages { get; private set; }
 
     public ISocketClient Client { get; private set; }
@@ -73,14 +71,6 @@ class Global
     {
         messageCount++;
         Debug.Log("received " + message);
-        
-        
-        if (message.StartsWith(MessagePrefix.PLAYER))
-        {
-            PlayerMessage playerMessage = new PlayerMessage();
-            playerMessage.DeserializeArguments(message.Remove(0, MessagePrefix.PLAYER.Length));
-            PlayerMessages.Enqueue(playerMessage);
-        }
 
 
         if (message.StartsWith(MessagePrefix.MAP))

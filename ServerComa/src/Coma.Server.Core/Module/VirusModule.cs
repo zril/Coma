@@ -14,9 +14,13 @@ namespace Coma.Server.Core.Module
 {
     public class VirusModule : BaseModule
     {
+        private Random random;
+
         public VirusModule()
             : base(10000)
-        { }
+        {
+            random = new Random();
+        }
 
         public override void Update(TimeSpan elapsed)
         {
@@ -28,13 +32,12 @@ namespace Coma.Server.Core.Module
 
         private void AddVirus(WorldMap map)
         {
-            var random = new Random();
             var virusPosList = new List<Position>();
             for (int j = 0; j < map.GetTiles().GetLength(1); j++)
             {
                 for (int i = 0; i < map.GetTiles().GetLength(0); i++)
                 {
-                    if (map.GetTiles()[i, j].Influence < 0 && map.GetTiles()[i, j].Influence > -10)
+                    if (map.GetTiles()[i, j].Influence < 0 && map.GetTiles()[i, j].Influence > -10 && map.GetTiles()[i, j].Item.ItemType == TileItemType.NONE)
                     {
                         virusPosList.Add(new Position(i, j));
                     }

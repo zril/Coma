@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Map\Items\HarvestorSoulItem.cs" />
+    <Compile Include="Map\Items\HarvestorBodyItem.cs" />
     <Compile Include="Map\Items\RadianceAreaSoulItem.cs" />
     <Compile Include="Map\Items\RadianceAreaBodyItem.cs" />
     <Compile Include="Map\Items\GeneratorSoulItem.cs" />
@@ -72,7 +74,7 @@
     <Compile Include="Message\BaseMessage.cs" />
     <Compile Include="Message\MapMessage.cs" />
     <Compile Include="Message\MessagePrefix.cs" />
-    <Compile Include="Message\PlayerMessage.cs" />
+    <Compile Include="Message\CameraMessage.cs" />
     <Compile Include="Parameter\BaseParam.cs" />
     <Compile Include="CommandType.cs" />
     <Compile Include="Parameter\BuildParam.cs" />

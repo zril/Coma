@@ -39,70 +39,101 @@ namespace Coma.Common.Map.Item
             //NONE
             type = TileItemType.NONE;
             items[(int)type] = new NoItem();
+            items[(int)type].Fonction = TileItemFonction.NONE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_BODY;
             items[(int)type] = new ResourceBodyItem(100);
+            items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_SOUL;
             items[(int)type] = new ResourceSoulItem(100);
+            items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_BODY;
             items[(int)type] = new ResourceBodyRareItem(100);
+            items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_SOUL;
             items[(int)type] = new ResourceSoulRareItem(100);
+            items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //BUILD
             type = TileItemType.BUILD_AREA_BODY;
             items[(int)type] = new BuildAreaBodyItem();
+            items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
+            items[(int)type].MaintenanceCellCostRate = 1;
 
             //BUILD
             type = TileItemType.BUILD_AREA_SOUL;
             items[(int)type] = new BuildAreaSoulItem();
+            items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
+            items[(int)type].MaintenanceThoughtCostRate = 1;
 
             //GENERATOR
             type = TileItemType.GENERATOR_SOUL;
             items[(int)type] = new GeneratorSoulItem();
+            items[(int)type].Fonction = TileItemFonction.GENERATE;
 
             //GENERATOR
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new GeneratorBodyItem();
+            items[(int)type].Fonction = TileItemFonction.GENERATE;
 
             //RADIANCE
             type = TileItemType.RADIANCE_AREA_BODY;
             items[(int)type] = new RadianceAreaBodyItem();
+            items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
+            items[(int)type].MaintenanceCellCostRate = 1;
 
             //RADIANCE
             type = TileItemType.RADIANCE_AREA_SOUL;
             items[(int)type] = new RadianceAreaSoulItem();
+            items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
+            items[(int)type].MaintenanceThoughtCostRate = 1;
+
+            //HARVEST
+            type = TileItemType.HARVESTOR_BODY;
+            items[(int)type] = new HarvestorBodyItem();
+            items[(int)type].Fonction = TileItemFonction.HARVEST;
+
+            //HARVEST
+            type = TileItemType.HARVESTOR_SOUL;
+            items[(int)type] = new HarvestorSoulItem();
+            items[(int)type].Fonction = TileItemFonction.HARVEST;
 
             //VIRUS
             type = TileItemType.VIRUS;
             items[(int)type] = new VirusItem();
+            items[(int)type].Fonction = TileItemFonction.HOSTILE;
 
             //NIGHTMARE
             type = TileItemType.NIGHTMARE;
             items[(int)type] = new NightmareItem();
+            items[(int)type].Fonction = TileItemFonction.HOSTILE;
 
             //ORGAN
             type = TileItemType.ORGAN;
             items[(int)type] = new NightmareItem();
+            items[(int)type].Fonction = TileItemFonction.POI;
 
             //CORRUPTED ORGAN
             type = TileItemType.CORRUPTED_ORGAN;
-            items[(int)type] = new NightmareItem();
+            items[(int)type] = new CorruptedOrganItem();
+            items[(int)type].Fonction = TileItemFonction.POI;
 
             //FEELING
             type = TileItemType.FEELING;
-            items[(int)type] = new NightmareItem();
+            items[(int)type] = new FeelingItem();
+            items[(int)type].Fonction = TileItemFonction.POI;
 
             //CORRUPTED FEELING
             type = TileItemType.CORRUPTED_FEELING;
-            items[(int)type] = new NightmareItem();
+            items[(int)type] = new CorruptedFeelingItem();
+            items[(int)type].Fonction = TileItemFonction.POI;
 
             //TRUC 2
             //type = TileItemType.GENERATOR_BODY;

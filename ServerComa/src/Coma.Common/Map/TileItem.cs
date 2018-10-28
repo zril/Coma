@@ -18,6 +18,9 @@ namespace Coma.Common.Map.Item
         public int CostThoughts { get; set; }
         public int CostIdeas { get; set; }
 
+        public int MaintenanceCellCostRate { get; set; }
+        public int MaintenanceThoughtCostRate { get; set; }
+
         public abstract string ToMessage();
 
         public abstract void FromMessage(string message);

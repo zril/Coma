@@ -13,6 +13,8 @@ namespace Coma.Server.Model.Map
     {
         private Tile[,] tiles;
 
+        public Position Start { get; set; }
+
         public WorldMap(int mapsize, PlayerType playerType)
         {
             Random random = new Random();
@@ -34,12 +36,14 @@ namespace Coma.Server.Model.Map
 
                 for (int n = 0; n < 12; n++)
                 {
-                    AddResourcePatch(30, mapsize, random, TileItemType.RESOURCE_COMMON_BODY);
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(30, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_BODY);
                 }
 
                 for (int n = 0; n < 5; n++)
                 {
-                    AddResourcePatch(20, mapsize, random, TileItemType.RESOURCE_RARE_BODY);
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(20, mapsize, patchCenter, TileItemType.RESOURCE_RARE_BODY);
                 }
 
                 var startX = random.Next(mapsize / 4);
@@ -57,6 +61,8 @@ namespace Coma.Server.Model.Map
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
 
+                Start = new Position(startX, startY);
+
             }
 
             //Soul
@@ -64,16 +70,22 @@ namespace Coma.Server.Model.Map
             {
                 for (int n = 0; n < 12; n++)
                 {
-                    AddResourcePatch(30, mapsize, random, TileItemType.RESOURCE_COMMON_SOUL);
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(30, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_SOUL);
                 }
 
                 for (int n = 0; n < 5; n++)
                 {
-                    AddResourcePatch(20, mapsize, random, TileItemType.RESOURCE_RARE_SOUL);
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(20, mapsize, patchCenter, TileItemType.RESOURCE_RARE_SOUL);
                 }
+
 
                 var startX = random.Next(mapsize / 4);
                 var startY = random.Next(mapsize / 4);
+                
+                Position center = new Position(startX - 5 + random.Next(10), startY - 5 + random.Next(10));
+                AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_SOUL);
 
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.FEELING);
 
@@ -81,6 +93,8 @@ namespace Coma.Server.Model.Map
                 var endY = startY + 50;
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
+
+                Start = new Position(startX, startY);
             }
         }
 
@@ -90,11 +104,9 @@ namespace Coma.Server.Model.Map
         }
 
 
-        private void AddResourcePatch(int size, int mapsize, Random random, TileItemType tileType)
+        private void AddResourcePatch(int size, int mapsize, Position center, TileItemType tileType)
         {
             var patch = GenUtils.MazeGen(size, 5, false, 1, 1, 1, 1);
-
-            Position center = new Position(random.Next(mapsize), random.Next(mapsize));
 
             foreach(Position pos in patch)
             {

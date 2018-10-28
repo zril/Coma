@@ -30,7 +30,7 @@ namespace Coma.Server.Core.Command
                 map = GameModel.Instance.SoulMap;
             }
 
-            if (map.GetTiles()[param.Position.X, param.Position.Y].Item.ItemType == TileItemType.NONE)
+            if (map.GetTiles()[param.Position.X, param.Position.Y].Contructable && map.GetTiles()[param.Position.X, param.Position.Y].Item.ItemType == TileItemType.NONE)
             {
                 map.GetTiles()[param.Position.X, param.Position.Y].Item = TileItemInfo.GetClone(param.Id);
             }

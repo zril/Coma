@@ -78,6 +78,16 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(8, 20);
 
+            //HARVESTOR
+            type = TileItemType.HARVESTOR_BODY;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new HarvestFunction(1, 3);
+
+            //HARVESTOR
+            type = TileItemType.HARVESTOR_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new HarvestFunction(1, 30);
+
             //VIRUS
             type = TileItemType.VIRUS;
             items[(int)type] = new FunctionInfo();
