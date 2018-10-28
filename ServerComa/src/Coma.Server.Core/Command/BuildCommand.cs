@@ -19,6 +19,8 @@ namespace Coma.Server.Core.Command
     {
         public override void RunWithCast(Player player, BuildParam param)
         {
+            
+
             var cellcost = TileItemInfo.Get(param.Id).CostCells;
             var nutrientcost = TileItemInfo.Get(param.Id).CostNutrients;
             var thoughtcost = TileItemInfo.Get(param.Id).CostThoughts;
@@ -52,6 +54,26 @@ namespace Coma.Server.Core.Command
             {
                 map = GameModel.Instance.SoulMap;
             }
+
+            if (param.Id == TileItemType.NONE)
+            {
+                switch (map.GetTiles()[param.Position.X, param.Position.Y].Item.ItemType)
+                {
+                    case TileItemType.GENERATOR_SOUL:
+                    case TileItemType.GENERATOR_BODY:
+                    case TileItemType.BUILD_AREA_BODY:
+                    case TileItemType.BUILD_AREA_SOUL:
+                    case TileItemType.HARVESTOR_BODY:
+                    case TileItemType.HARVESTOR_SOUL:
+                    case TileItemType.RADIANCE_AREA_BODY:
+                    case TileItemType.RADIANCE_AREA_SOUL:
+                        map.GetTiles()[param.Position.X, param.Position.Y].Item = TileItemInfo.GetClone(param.Id);
+                        return;
+                    default:
+                        return;
+                }
+            } 
+            
 
             if (map.GetTiles()[param.Position.X, param.Position.Y].Contructable && map.GetTiles()[param.Position.X, param.Position.Y].Item.ItemType == TileItemType.NONE)
             {
