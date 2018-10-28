@@ -52,8 +52,8 @@ namespace Coma.Server.Model.Map
                     AddResourcePatch(40, mapsize, patchCenter, TileItemType.OBSTACLE);
                 }
 
-                var startX = 5 + random.Next(mapsize / 2);
-                var startY = 5 + random.Next(mapsize / 2);
+                var startX = 10 + random.Next(mapsize / 4);
+                var startY = 10 + random.Next(mapsize / 4);
 
                 tiles[0, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
@@ -69,8 +69,13 @@ namespace Coma.Server.Model.Map
                 Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_BODY);
 
-                var endX = startX + 40;
-                var endY = startY + 40;
+                var endX = startX + 5 + random.Next(10);
+                var endY = startY + 50 + random.Next(10);
+
+                tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
+
+                endX = startX + 50 + random.Next(10);
+                endY = startY + 5 + random.Next(10);
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
 
@@ -100,16 +105,21 @@ namespace Coma.Server.Model.Map
                 }
 
 
-                var startX = 5 + random.Next(mapsize / 2);
-                var startY = 5 + random.Next(mapsize / 2);
+                var startX = 10 + random.Next(mapsize / 4);
+                var startY = 10 + random.Next(mapsize / 4);
 
                 Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_SOUL);
 
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.FEELING);
 
-                var endX = startX + 40;
-                var endY = startY + 40;
+                var endX = startX + 5 + random.Next(10);
+                var endY = startY + 50 + random.Next(10);
+
+                tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
+
+                endX = startX + 50 + random.Next(10);
+                endY = startY + 5 + random.Next(10);
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
 

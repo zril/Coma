@@ -122,7 +122,7 @@ namespace Coma.Common.Map.Item
             //CORRUPTED ORGAN
             type = TileItemType.CORRUPTED_ORGAN;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(24, -60);
+            items[(int)type].MainFunction = new RadianceFunction(20, -60);
 
             //FEELING
             type = TileItemType.FEELING;
@@ -133,7 +133,7 @@ namespace Coma.Common.Map.Item
             //CORRUPTED FEELING
             type = TileItemType.CORRUPTED_FEELING;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(20, -75);
+            items[(int)type].MainFunction = new RadianceFunction(18, -75);
 
             //TRUC 2
             //type = TileItemType.GENERATOR_BODY;
