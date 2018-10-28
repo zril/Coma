@@ -63,7 +63,9 @@ namespace Coma.Common.Map.Item
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new GeneratorFunction(4, ResourceType.CELLS);
-            
+            items[(int)type].SynergyFunction = new GeneratorFunction(1, ResourceType.CELLS);
+            items[(int)type].SynergyTrigger = TileItemType.HARVESTOR_BODY;
+
             //HARVESTOR
             type = TileItemType.HARVESTOR_BODY;
             items[(int)type] = new FunctionInfo();
@@ -73,8 +75,6 @@ namespace Coma.Common.Map.Item
             type = TileItemType.RADIANCE_AREA_BODY;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(8, 40);
-            items[(int)type].SynergyFunction = new RadianceFunction(12, 5);
-            items[(int)type].SynergyTrigger = TileItemType.BUILD_AREA_BODY;
 
             //BUILD AREA
             type = TileItemType.BUILD_AREA_SOUL;
@@ -98,6 +98,8 @@ namespace Coma.Common.Map.Item
             type = TileItemType.RADIANCE_AREA_SOUL;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(5, 35);
+            items[(int)type].SynergyFunction = new RadianceFunction(10, 5);
+            items[(int)type].SynergyTrigger = TileItemType.BUILD_AREA_SOUL;
 
             //VIRUS
             type = TileItemType.VIRUS;

@@ -23,16 +23,16 @@ namespace Coma.Server.Model.Item.Fonctions
             switch (Resource)
             {
                 case ResourceType.CELLS:
-                    GameModel.Instance.Bank.Cells += Rate;
+                    GameModel.Instance.Bank.Cells += Rate * (synergy + 1);
                     break;
                 case ResourceType.NUTRIENTS:
-                    GameModel.Instance.Bank.Nutrients += Rate;
+                    GameModel.Instance.Bank.Nutrients += Rate * (synergy + 1);
                     break;
                 case ResourceType.THOUGHTS:
-                    GameModel.Instance.Bank.Thoughts += Rate;
+                    GameModel.Instance.Bank.Thoughts += Rate * (synergy + 1);
                     break;
                 case ResourceType.IDEAS:
-                    GameModel.Instance.Bank.Ideas += Rate;
+                    GameModel.Instance.Bank.Ideas += Rate * (synergy + 1);
                     break;
                 default:
                     break;

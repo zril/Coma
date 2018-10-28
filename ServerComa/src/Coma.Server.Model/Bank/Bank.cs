@@ -18,7 +18,7 @@ namespace Coma.Server.Model
             Cells = 200;
             Nutrients = 200;
             Thoughts = 200;
-            Ideas = 0;
+            Ideas = 200;
         }
     }
 }

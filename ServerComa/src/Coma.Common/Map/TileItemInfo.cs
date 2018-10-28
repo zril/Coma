@@ -86,6 +86,7 @@ namespace Coma.Common.Map.Item
             items[(int)type].Fonction = TileItemFonction.GENERATE;
             items[(int)type].CostCells = 65;
             items[(int)type].CostNutrients = 30;
+            items[(int)type].SynergyMode = TileItemSynergyMode.DIAGONAL;
 
             //RADIANCE
             type = TileItemType.RADIANCE_AREA_BODY;
@@ -94,7 +95,6 @@ namespace Coma.Common.Map.Item
             items[(int)type].MaintenanceCellCostRate = 2;
             items[(int)type].CostCells = 60;
             items[(int)type].CostNutrients = 25;
-            items[(int)type].SynergyMode = TileItemSynergyMode.DIAGONAL;
 
             //BUILD
             type = TileItemType.BUILD_AREA_SOUL;
@@ -126,6 +126,7 @@ namespace Coma.Common.Map.Item
             items[(int)type].MaintenanceIdeaCostRate = 1;
             items[(int)type].CostThoughts = 25;
             items[(int)type].CostIdeas = 5;
+            items[(int)type].SynergyMode = TileItemSynergyMode.VERTICAL;
 
             //VIRUS
             type = TileItemType.VIRUS;
