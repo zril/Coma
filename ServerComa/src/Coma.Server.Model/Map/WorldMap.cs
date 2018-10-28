@@ -46,8 +46,8 @@ namespace Coma.Server.Model.Map
                     AddResourcePatch(20, mapsize, patchCenter, TileItemType.RESOURCE_RARE_BODY);
                 }
 
-                var startX = random.Next(mapsize / 4);
-                var startY = random.Next(mapsize / 4);
+                var startX = random.Next(mapsize / 2);
+                var startY = random.Next(mapsize / 2);
 
                 tiles[0, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
@@ -81,8 +81,8 @@ namespace Coma.Server.Model.Map
                 }
 
 
-                var startX = random.Next(mapsize / 4);
-                var startY = random.Next(mapsize / 4);
+                var startX = random.Next(mapsize / 2);
+                var startY = random.Next(mapsize / 2);
                 
                 Position center = new Position(startX - 5 + random.Next(10), startY - 5 + random.Next(10));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_SOUL);

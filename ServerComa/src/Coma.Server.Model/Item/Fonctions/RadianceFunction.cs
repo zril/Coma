@@ -34,6 +34,11 @@ namespace Coma.Server.Model.Item.Fonctions
                         {
                             var power = Power - (Power / Radius) * dist;
                             map.GetTiles()[tmpPos.X, tmpPos.Y].Influence += power;
+
+                            if (power > 0)
+                            {
+                                map.GetTiles()[tmpPos.X, tmpPos.Y].Radiance = true;
+                            }
                         }
                     }
                 }

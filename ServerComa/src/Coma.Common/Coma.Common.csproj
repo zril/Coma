@@ -72,6 +72,7 @@
     <Compile Include="Map\TileItemType.cs" />
     <Compile Include="Map\TileType.cs" />
     <Compile Include="Message\BaseMessage.cs" />
+    <Compile Include="Message\BankMessage.cs" />
     <Compile Include="Message\MapMessage.cs" />
     <Compile Include="Message\MessagePrefix.cs" />
     <Compile Include="Message\CameraMessage.cs" />

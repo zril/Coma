@@ -50,6 +50,17 @@ namespace Coma.Server.Core.Module
                 MapMessage soulMessage = new MapMessage(GameModel.Instance.SoulMap.GetTiles());
                 GlobalServer.Instance.SendMessage(GameModel.Instance.SoulPlayer.Id, soulMessage.ToString());
             }
+
+            BankMessage bankMessage = new BankMessage(GameModel.Instance.Bank.Cells, GameModel.Instance.Bank.Nutrients, GameModel.Instance.Bank.Thoughts, GameModel.Instance.Bank.Ideas);
+
+            if (GameModel.Instance.BodyPlayer != null)
+            {
+                GlobalServer.Instance.SendMessage(GameModel.Instance.BodyPlayer.Id, bankMessage.ToString());
+            }
+            if (GameModel.Instance.SoulPlayer != null)
+            {
+                GlobalServer.Instance.SendMessage(GameModel.Instance.SoulPlayer.Id, bankMessage.ToString());
+            }
         }
 
         private void UpdateTiles(PlayerType mapType)
@@ -63,6 +74,7 @@ namespace Coma.Server.Core.Module
                 {
                     map.GetTiles()[i, j].Influence = 0;
                     map.GetTiles()[i, j].Contructable = false;
+                    map.GetTiles()[i, j].Radiance = false;
                 }
             }
 

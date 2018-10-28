@@ -43,8 +43,11 @@ namespace Coma.Server.Core.Module
                     }
                 }
             }
-            var nightmarepos = nightmarePosList[random.Next(nightmarePosList.Count)];
-            map.GetTiles()[nightmarepos.X, nightmarepos.Y].Item = TileItemInfo.GetClone(TileItemType.NIGHTMARE);
+            if (nightmarePosList.Count > 0)
+            {
+                var nightmarepos = nightmarePosList[random.Next(nightmarePosList.Count)];
+                map.GetTiles()[nightmarepos.X, nightmarepos.Y].Item = TileItemInfo.GetClone(TileItemType.NIGHTMARE);
+            }
         }
     }
 }
