@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Coma.Common.Map;
 using Coma.Common.Map.Item;
+using DG.Tweening;
 
-public class TileView : MonoBehaviour {
+public class TileView : MonoBehaviour
+{
 
     [SerializeField]
     public Tile currentTile;
@@ -25,18 +27,26 @@ public class TileView : MonoBehaviour {
     public Color TileColorInfluOKSoul;
     public Color TileColorInfluKOBody;
     public Color TileColorInfluKOSoul;
+    public Color TileColorSynergyBody;
+    public Color TileColorSynergySoul;
 
     public float ColorCapValue;
 
     public Transform TileUICanvas;
-    
-	// Use this for initialization
-	void Start () {
-        
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    public GameObject SynergyMarkerPrefab;
+    private GameObject SynergyMarker;
+    private Tween SynergyTween;
+
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
     }
 
@@ -62,13 +72,13 @@ public class TileView : MonoBehaviour {
 
     public void DisableTileUI()
     {
-        if(currentTileUI != null)
+        if (currentTileUI != null)
             currentTileUI.gameObject.SetActive(false);
     }
 
     public void EnableTileUI()
     {
-        if(TileRenderer.isVisible)
+        if (TileRenderer.isVisible)
         {
             UpdateUI();
             currentTileUI.gameObject.SetActive(true);
@@ -81,7 +91,7 @@ public class TileView : MonoBehaviour {
 
         TileRenderer.sprite = MainController.TileSprites[(int)currentTile.Type];
         TileRenderer.color = MainController.PlayerIsBody ? TileColorBody : TileColorSoul;
-        if(currentTile == null || currentTile.Type == TileType.NONE)
+        if (currentTile == null || currentTile.Type == TileType.NONE)
         {
             // Erase all
             TileItemRenderer.sprite = null;
@@ -98,17 +108,60 @@ public class TileView : MonoBehaviour {
         }
         else
         {
-            if(currentTile.Item == null || currentTile.Item.ItemType == TileItemType.NONE)
+            if (currentTile.Item == null || currentTile.Item.ItemType == TileItemType.NONE)
             {
+                if (SynergyMarker != null)
+                {
+                    Destroy(SynergyMarker);
+                }
                 // Remove Tileitem sprites
-                TileItemRenderer.sprite = null;
+                if (TileItemRenderer.sprite != null)
+                {
+                    TileItemRenderer.DOFade(0f, 0.5f).onComplete = () =>
+                     {
+                         TileItemRenderer.sprite = null;
+                     };
+                }
+                else
+                {
+                    TileItemRenderer.sprite = null;
+                }
             }
             else
             {
                 // Replace with constant TileItem
                 item = TileItemInfo.Get(currentTile.Item.ItemType);
+
+                bool wasEmpty = TileItemRenderer.sprite == null;
+                Color color = Color.white;
                 TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
-                TileItemRenderer.color = MainController.TileItemColors[(int)item.SynergyMode];
+                if(wasEmpty)
+                {
+                    color.a = 0f;
+                }
+                TileItemRenderer.color = color;
+                var tween = TileItemRenderer.DOFade(1f, 0.5f);
+
+                if(currentTile.Item.Synergy > 0 && SynergyMarker == null)
+                {
+                    //DoTween + Instantiate marker
+                    color.a = 1f;
+                    tween.OnComplete(() =>
+                    {
+                        SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, .5f).SetLoops(-1, LoopType.Yoyo);
+                    });
+                    SynergyMarker = Instantiate<GameObject>(SynergyMarkerPrefab, transform);
+                    SynergyMarker.GetComponent<SynergyMarker>().SynergyMode = item.SynergyMode;
+                    Debug.Log(item.SynergyMode);
+                }
+                else if(currentTile.Item.Synergy == 0 && SynergyMarker != null)
+                {
+                    // Stop Tweening + Destroy marker
+                    SynergyTween.Complete();
+                    //Destroy(SynergyMarker);
+                    TileItemRenderer.color = color;
+                }
+
             }
             Color consColor = TileConstructRenderer.color;
             consColor.a = currentTile.Contructable ? 0.25f : 0;
@@ -120,26 +173,23 @@ public class TileView : MonoBehaviour {
 
             Color influValueColor = Color.black;
 
+            float alpha = 0;
             if (currentTile.Influence > 0)
             {
                 influValueColor = MainController.PlayerIsBody ? TileColorInfluOKBody : TileColorInfluOKSoul;
+                alpha = 0.05f + 0.85f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
             }
-            else
+            else if (currentTile.Influence < 0)
             {
                 influValueColor = MainController.PlayerIsBody ? TileColorInfluKOBody : TileColorInfluKOSoul;
+                alpha = 0.35f + 0.5f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
             }
 
-            float alpha = 0;
-
-            if (currentTile.Influence != 0)
-            {
-                alpha = 0.1f + 0.75f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
-            }
             influValueColor.a = alpha;
-            TileInfluValueRenderer.color = influValueColor;
+            TileInfluValueRenderer.DOColor(influValueColor, 0.5f);
         }
 
-        if(TileItemRenderer.isVisible && currentTileUI != null && MainController.IsTileUIVisible)
+        if (TileItemRenderer.isVisible && currentTileUI != null && MainController.IsTileUIVisible)
         {
             currentTileUI.UpdateDisplay(item);
         }

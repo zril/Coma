@@ -33,6 +33,11 @@ public class BuildButton : MonoBehaviour
         InputController.SelectForBuild(ItemType);
     }
 
+    public void Delete()
+    {
+        InputController.SelectForDelete(ButtonImage.sprite);
+    }
+
     private void Init()
     {
         InputController = FindObjectOfType<InputControl>();

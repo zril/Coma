@@ -179,14 +179,18 @@ MonoBehaviour:
   TileConstructRenderer: {fileID: 212239728764212840}
   TileInfluCoverRenderer: {fileID: 212927302272097780}
   TileInfluValueRenderer: {fileID: 212630174134837314}
-  TileColorBody: {r: 0.39215687, g: 0, b: 0, a: 1}
-  TileColorSoul: {r: 0, g: 0, b: 0.39215687, a: 1}
+  TileColorBody: {r: 0.78431374, g: 0, b: 0, a: 1}
+  TileColorSoul: {r: 0, g: 0.39215687, b: 0.78431374, a: 1}
   TileColorInfluOKBody: {r: 1, g: 0.78431374, b: 0, a: 0}
-  TileColorInfluOKSoul: {r: 0, g: 0.5019608, b: 1, a: 0}
+  TileColorInfluOKSoul: {r: 0.4627451, g: 0.92156863, b: 0.67058825, a: 0}
   TileColorInfluKOBody: {r: 0, g: 0, b: 0, a: 0}
   TileColorInfluKOSoul: {r: 0, g: 0, b: 0, a: 0}
+  TileColorSynergyBody: {r: 1, g: 1, b: 0, a: 1}
+  TileColorSynergySoul: {r: 0, g: 1, b: 1, a: 0}
   ColorCapValue: 45
   TileUICanvas: {fileID: 0}
+  SynergyMarkerPrefab: {fileID: 1516553774162718, guid: 36b8a69040798c040bb657bbb4d83642,
+    type: 2}
 --- !u!212 &212239728764212840
 SpriteRenderer:
   m_ObjectHideFlags: 1

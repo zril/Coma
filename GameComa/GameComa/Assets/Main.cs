@@ -12,6 +12,7 @@ public class Main : MonoBehaviour
 
     public List<Sprite> TileSprites;
     public List<Sprite> TileItemSprites;
+    public List<Sprite> TileItemSynergySprites;
     public List<Color> TileItemColors;
 
 

@@ -100,6 +100,9 @@ public class InputControl : MonoBehaviour
             //RequestForBuild
             if (Input.GetMouseButtonDown(0))
             {
+                if (SelectedBuildItem == TileItemType.OBSTACLE)
+                    SelectedBuildItem = TileItemType.NONE;
+
                 MainController.RequestForBuild(SelectedBuildItem, (int)SelectImage.position.x, (int)SelectImage.position.y);
             }
             SelectedBuildItem = TileItemType.NONE;
@@ -130,6 +133,13 @@ public class InputControl : MonoBehaviour
         SelectedBuildItem = type;
     }
 
-
+    public void SelectForDelete(Sprite spriteToUse)
+    {
+        SelectImage.GetComponent<Image>().sprite = spriteToUse;
+        Color col = Color.red;
+        col.a = 0.2f;
+        SelectImage.GetComponent<Image>().color = col;
+        SelectedBuildItem = TileItemType.OBSTACLE;
+    }
 
 }
