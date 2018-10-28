@@ -237,6 +237,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a1c24419803b46341a647ef133b37793, type: 3}
   - {fileID: 21300000, guid: a68fac0d7d882834993b8edb8f8e19ed, type: 3}
   - {fileID: 21300000, guid: a68fac0d7d882834993b8edb8f8e19ed, type: 3}
+  - {fileID: 21300000, guid: d8f3a35ddf36eff43b5ef5038fd7eeff, type: 3}
   TileItemColors:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
