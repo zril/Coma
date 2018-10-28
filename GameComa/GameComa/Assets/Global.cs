@@ -42,14 +42,15 @@ class Global
 
     private int messageCount = 0;
     private int port = 4242;
-    private string serverIp = "127.0.0.1";
+    private string serverIp = "192.168.1.125";
     private string userName = "nope";
 
-    public void InitClient(bool body)
+    public void InitClient(bool body, string serverIp)
     {
         if (PlayerId == 0)
         {
             userName = body ? "body" : "soul";
+            this.serverIp = serverIp;
             var randomport = UnityEngine.Random.Range(0, 1000);
             Settings.Default.ClientPort = port + randomport;
             Client = new TcpSocketClient();
