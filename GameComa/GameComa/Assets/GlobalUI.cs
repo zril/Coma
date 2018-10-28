@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using DG.Tweening;
 
 public class GlobalUI : MonoBehaviour {
 
@@ -11,8 +13,16 @@ public class GlobalUI : MonoBehaviour {
     public int maxItemsPerRow;
     public GameObject ButtonPrefab;
 
-	// Use this for initialization
-	void Start () {
+    public TextMeshProUGUI BodyBankText;
+    public TextMeshProUGUI SoulBankText;
+
+    private int DisplayBankCells = 0;
+    private int DisplayBankNutrients = 0;
+    private int DisplayBankThoughts = 0;
+    private int DisplayBankIdeas = 0;
+
+    // Use this for initialization
+    void Start () {
 
         int buttonRow = 0;
         int buttonColumn = 0;
@@ -50,10 +60,20 @@ public class GlobalUI : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-	}
+	void Update ()
+    {
+        string BodyBank = "€ " + ("" + DisplayBankCells).PadLeft(5, '0') + "   -   $ " + ("" + DisplayBankNutrients).PadLeft(5, '0');
+        string SoulBank = ("" + DisplayBankIdeas).PadLeft(5, '0') + " ¤   -   " + ("" + DisplayBankThoughts).PadLeft(5, '0') + " £";
+        BodyBankText.text = BodyBank;
+        SoulBankText.text = SoulBank;
+    }
     
-    
+    public void UpdateBankAccounts(int cells, int nutrients, int thoughts, int ideas)
+    {
+        DOTween.To(() => DisplayBankCells, x => DisplayBankCells = x, cells, 0.5f);
+        DOTween.To(() => DisplayBankNutrients, x => DisplayBankNutrients = x, nutrients, 0.5f);
+        DOTween.To(() => DisplayBankThoughts, x => DisplayBankThoughts = x, thoughts, 0.5f);
+        DOTween.To(() => DisplayBankIdeas, x => DisplayBankIdeas = x, ideas, 0.5f);
+    }
 
 }

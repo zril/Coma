@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c232656139b3714f8db687854e2421f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerIsBody: 0
+  PlayerIsBody: 1
   TileSprites:
   - {fileID: 21300000, guid: 88fe175aa6673944bb4fdc7591dee574, type: 3}
   - {fileID: 21300000, guid: 88fe175aa6673944bb4fdc7591dee574, type: 3}
@@ -1150,6 +1150,8 @@ MonoBehaviour:
   maxItemsPerRow: 3
   ButtonPrefab: {fileID: 1967932476002176, guid: d98cfe8c0e28e7147a0a84dd3137d2a2,
     type: 2}
+  BodyBankText: {fileID: 1462885577}
+  SoulBankText: {fileID: 1153281545}
 --- !u!1 &2129083025
 GameObject:
   m_ObjectHideFlags: 0
