@@ -18,7 +18,7 @@ namespace Coma.Server.Model.Item.Fonctions
             Resource = resource;
         }
 
-        public override void Execute(PlayerType mapType, Position pos)
+        public override void Execute(PlayerType mapType, Position pos, int synergy)
         {
             switch (Resource)
             {

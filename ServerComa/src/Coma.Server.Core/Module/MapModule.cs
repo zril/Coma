@@ -3,6 +3,7 @@ using Coma.Common.Map.Item;
 using Coma.Common.Message;
 using Coma.Server.Model;
 using Coma.Server.Model.Item;
+using Coma.Server.Model.Item.Fonctions;
 using Coma.Server.Model.Map;
 using System;
 using System.Collections.Generic;
@@ -128,9 +129,17 @@ namespace Coma.Server.Core.Module
                             listConsoIdeas.Add(tmppos);
                         }
 
-                        //todo condition
-                        //fonctions.SynergyFunction.Execute(mapType, tmppos);
-
+                        //synergy
+                        if (TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).SynergyMode != TileItemSynergyMode.NONE)
+                        {
+                            int nbSynergy = Synergy.CheckSynergyTrigger(map, tmppos, TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).SynergyMode, TileItemFunctionInfo.Get(map.GetTiles()[i, j].Item.ItemType).SynergyTrigger);
+                            if (nbSynergy > 0)
+                            {
+                                fonctions.SynergyFunction.Execute(mapType, tmppos, nbSynergy);
+                                map.GetTiles()[i, j].Item.Synergy = nbSynergy;
+                            }
+                        }
+                        
                         //maintenance
                         GameModel.Instance.Bank.Cells -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceCellCostRate;
                         GameModel.Instance.Bank.Thoughts -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceThoughtCostRate;

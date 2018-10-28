@@ -56,7 +56,9 @@ namespace Coma.Common.Map.Item
             type = TileItemType.BUILD_AREA_BODY;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new BuildAreaFunction(6);
-            
+            items[(int)type].SynergyFunction = new RadianceFunction(7, 7, true);
+            items[(int)type].SynergyTrigger = TileItemType.GENERATOR_BODY;
+
             //GENERATOR
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new FunctionInfo();
@@ -82,6 +84,8 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new GeneratorFunction(3, ResourceType.THOUGHTS);
             items[(int)type].SecondaryFunction = new GeneratorFunction(1, ResourceType.IDEAS);
+            items[(int)type].SynergyFunction = new RadianceFunction(9, 9, true);
+            items[(int)type].SynergyTrigger = TileItemType.RADIANCE_AREA_SOUL;
 
             //HARVESTOR
             type = TileItemType.HARVESTOR_SOUL;
@@ -91,7 +95,7 @@ namespace Coma.Common.Map.Item
             //RADIANCE AREA
             type = TileItemType.RADIANCE_AREA_SOUL;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(5, 25);
+            items[(int)type].MainFunction = new RadianceFunction(5, 35);
 
             //VIRUS
             type = TileItemType.VIRUS;
@@ -108,24 +112,24 @@ namespace Coma.Common.Map.Item
             //ORGAN
             type = TileItemType.ORGAN;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(15, 40);
+            items[(int)type].MainFunction = new RadianceFunction(15, 60);
             items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED ORGAN
             type = TileItemType.CORRUPTED_ORGAN;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(24, -45);
+            items[(int)type].MainFunction = new RadianceFunction(24, -60);
 
             //FEELING
             type = TileItemType.FEELING;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(15, 40);
+            items[(int)type].MainFunction = new RadianceFunction(15, 60);
             items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED FEELING
             type = TileItemType.CORRUPTED_FEELING;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(20, -60);
+            items[(int)type].MainFunction = new RadianceFunction(20, -75);
 
             //TRUC 2
             //type = TileItemType.GENERATOR_BODY;

@@ -8,6 +8,13 @@ namespace Coma.Server.Model.Item
 {
     public abstract class Function
     {
-        public abstract void Execute(PlayerType mapType, Position pos);
+
+
+        public void Execute(PlayerType mapType, Position pos)
+        {
+            Execute(mapType, pos, 0);
+        }
+
+        public abstract void Execute(PlayerType mapType, Position pos, int synergy);
     }
 }

@@ -16,7 +16,7 @@ namespace Coma.Server.Model.Item.Fonctions
             Radius = radius;
         }
 
-        public override void Execute(PlayerType mapType, Position pos)
+        public override void Execute(PlayerType mapType, Position pos, int synergy)
         {
             WorldMap map = GameModel.Instance.GetMap(mapType);
 

@@ -48,22 +48,22 @@ namespace Coma.Common.Map.Item
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_BODY;
-            items[(int)type] = new ResourceBodyItem(100);
+            items[(int)type] = new ResourceBodyItem(200);
             items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_SOUL;
-            items[(int)type] = new ResourceSoulItem(100);
+            items[(int)type] = new ResourceSoulItem(200);
             items[(int)type].Fonction = TileItemFonction.RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_BODY;
-            items[(int)type] = new ResourceBodyRareItem(100);
+            items[(int)type] = new ResourceBodyRareItem(50);
             items[(int)type].Fonction = TileItemFonction.RARE_RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_SOUL;
-            items[(int)type] = new ResourceSoulRareItem(100);
+            items[(int)type] = new ResourceSoulRareItem(50);
             items[(int)type].Fonction = TileItemFonction.RARE_RESOURCE;
 
             //BUILD
@@ -72,6 +72,7 @@ namespace Coma.Common.Map.Item
             items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
             items[(int)type].MaintenanceCellCostRate = 1;
             items[(int)type].CostCells = 30;
+            items[(int)type].SynergyMode = TileItemSynergyMode.ADJACENT;
 
             //HARVEST
             type = TileItemType.HARVESTOR_BODY;
@@ -107,6 +108,7 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new GeneratorSoulItem();
             items[(int)type].Fonction = TileItemFonction.GENERATE;
             items[(int)type].CostThoughts = 150;
+            items[(int)type].SynergyMode = TileItemSynergyMode.HORIZONTAL;
 
             //HARVEST
             type = TileItemType.HARVESTOR_SOUL;
@@ -121,8 +123,8 @@ namespace Coma.Common.Map.Item
             items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
             items[(int)type].MaintenanceThoughtCostRate = 3;
             items[(int)type].MaintenanceIdeaCostRate = 1;
-            items[(int)type].CostThoughts = 30;
-            items[(int)type].CostThoughts = 5;
+            items[(int)type].CostThoughts = 25;
+            items[(int)type].CostIdeas = 5;
 
             //VIRUS
             type = TileItemType.VIRUS;

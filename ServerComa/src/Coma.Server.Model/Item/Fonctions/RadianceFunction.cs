@@ -28,7 +28,7 @@ namespace Coma.Server.Model.Item.Fonctions
             Other = other;
         }
 
-        public override void Execute(PlayerType mapType, Position pos)
+        public override void Execute(PlayerType mapType, Position pos, int synergy)
         {
 
             WorldMap map = GameModel.Instance.GetMap(mapType);
@@ -55,6 +55,11 @@ namespace Coma.Server.Model.Item.Fonctions
             {
                 powertmp = Power + GameModel.Instance.EnemyPowerBonus * Math.Sign(Power);
                 radiustmp = Radius + GameModel.Instance.EnemyRadiusBonus;
+            }
+
+            if (synergy > 0)
+            {
+                powertmp = powertmp * (synergy + 1);
             }
 
             //champion de la bidouille

@@ -20,7 +20,7 @@ namespace Coma.Server.Model.Item.Fonctions
             Rate = rate;
         }
 
-        public override void Execute(PlayerType mapType, Position pos)
+        public override void Execute(PlayerType mapType, Position pos, int synergy)
         {
             WorldMap map = GameModel.Instance.GetMap(mapType);
 

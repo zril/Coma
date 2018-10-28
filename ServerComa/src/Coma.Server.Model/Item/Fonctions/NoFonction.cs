@@ -14,7 +14,7 @@ namespace Coma.Server.Model.Item.Fonctions
             //rien
         }
 
-        public override void Execute(PlayerType mapType, Position pos)
+        public override void Execute(PlayerType mapType, Position pos, int synergy)
         {
             //rien
         }
