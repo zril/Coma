@@ -36,6 +36,7 @@ public class Main : MonoBehaviour
         Global.Instance.InitClient(PlayerIsBody);
         TileMap = null;
         StartCoroutine("MapMessagesCoroutine");
+        StartCoroutine("GeneralMessagesCoroutine");
         globalUI = FindObjectOfType<GlobalUI>();
     }
 
@@ -57,8 +58,8 @@ public class Main : MonoBehaviour
         {
             while (Global.Instance.BankMessages.Count > 0)
             {
-
                 BankMessage bankMessage = Global.Instance.BankMessages.Dequeue();
+                SetBank(bankMessage.Cells, bankMessage.Nutrients, bankMessage.Thoughts, bankMessage.Ideas);
                 
             }
                 yield return null;
