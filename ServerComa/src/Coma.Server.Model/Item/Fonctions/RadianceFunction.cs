@@ -12,16 +12,35 @@ namespace Coma.Server.Model.Item.Fonctions
     {
         public int Radius { get; set; }
         public int Power { get; set; }
+        public bool Other { get; set; }
 
-        public RadianceFunction(int radius, int power)
+    public RadianceFunction(int radius, int power)
         {
             Radius = radius;
             Power = power;
+            Other = false;
+        }
+
+        public RadianceFunction(int radius, int power, bool other)
+        {
+            Radius = radius;
+            Power = power;
+            Other = other;
         }
 
         public override void Execute(PlayerType mapType, Position pos)
         {
             WorldMap map = GameModel.Instance.GetMap(mapType);
+            if (Other)
+            {
+                if (mapType == PlayerType.BODY)
+                {
+                    map = GameModel.Instance.GetMap(PlayerType.SOUL);
+                } else
+                {
+                    map = GameModel.Instance.GetMap(PlayerType.BODY);
+                }
+            }
 
             for (int i = pos.X - Radius; i <= pos.X + Radius; i++)
             {

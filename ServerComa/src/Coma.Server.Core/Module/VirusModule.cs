@@ -24,13 +24,10 @@ namespace Coma.Server.Core.Module
 
         public override void Update(TimeSpan elapsed)
         {
-            if (GameModel.Instance.BodyPlayer != null)
+            for (int n = 0; n < 3; n++)
             {
-                for (int n = 0; n < 3; n++)
-                {
-                    AddVirus(GameModel.Instance.GetMap(PlayerType.BODY));
-                } 
-            }
+                AddVirus(GameModel.Instance.GetMap(PlayerType.BODY));
+            } 
         }
 
         private void AddVirus(WorldMap map)

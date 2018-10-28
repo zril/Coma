@@ -81,6 +81,7 @@ namespace Coma.Common.Map.Item
             type = TileItemType.GENERATOR_SOUL;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new GeneratorFunction(3, ResourceType.THOUGHTS);
+            items[(int)type].SecondaryFunction = new GeneratorFunction(1, ResourceType.IDEAS);
 
             //HARVESTOR
             type = TileItemType.HARVESTOR_SOUL;
@@ -96,17 +97,19 @@ namespace Coma.Common.Map.Item
             type = TileItemType.VIRUS;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(5, -30);
+            items[(int)type].SecondaryFunction = new RadianceFunction(5, -8, true);
 
             //NIGHTMARE
             type = TileItemType.NIGHTMARE;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(10, -20);
+            items[(int)type].SecondaryFunction = new RadianceFunction(10, -5, true);
 
             //ORGAN
             type = TileItemType.ORGAN;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(15, 40);
-            items[(int)type].SynergyFunction = new BuildAreaFunction(20);
+            items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED ORGAN
             type = TileItemType.CORRUPTED_ORGAN;
@@ -117,7 +120,7 @@ namespace Coma.Common.Map.Item
             type = TileItemType.FEELING;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(15, 40);
-            items[(int)type].SynergyFunction = new BuildAreaFunction(20);
+            items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED FEELING
             type = TileItemType.CORRUPTED_FEELING;

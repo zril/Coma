@@ -101,12 +101,14 @@ namespace Coma.Server
                     PLAYERS.Add(sender, player);
                     GlobalServer.Instance.AddPlayer(player.Id, sender);
                     GameModel.Instance.BodyPlayer = player;
+                    GameModel.Instance.BodyCamInit = false;
                     break;
                 case "soul":
                     player = new Player(request, sender, PlayerType.SOUL);
                     PLAYERS.Add(sender, player);
                     GlobalServer.Instance.AddPlayer(player.Id, sender);
                     GameModel.Instance.SoulPlayer = player;
+                    GameModel.Instance.SoulCamInit = false;
                     break;
                 default:
                     response = "KO";

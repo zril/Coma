@@ -17,17 +17,14 @@ namespace Coma.Server.Core.Module
         private Random random;
 
         public NightmareModule()
-            : base(15000)
+            : base(5000)
         {
             random = new Random();
         }
 
         public override void Update(TimeSpan elapsed)
         {
-            if (GameModel.Instance.SoulPlayer != null)
-            {
-                AddNightmare(GameModel.Instance.GetMap(PlayerType.SOUL));
-            }
+            AddNightmare(GameModel.Instance.GetMap(PlayerType.SOUL));
         }
 
         private void AddNightmare(WorldMap map)

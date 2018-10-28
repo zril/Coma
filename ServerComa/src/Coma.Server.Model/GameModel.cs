@@ -33,6 +33,9 @@ namespace Coma.Server.Model
 
         public Player BodyPlayer { get; set; }
         public Player SoulPlayer { get; set; }
+        
+        public bool BodyCamInit { get; set; }
+        public bool SoulCamInit { get; set; }
 
         public WorldMap BodyMap { get; set; }
         public WorldMap SoulMap { get; set; }

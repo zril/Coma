@@ -120,6 +120,7 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new RadianceAreaSoulItem();
             items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
             items[(int)type].MaintenanceThoughtCostRate = 3;
+            items[(int)type].MaintenanceIdeaCostRate = 1;
             items[(int)type].CostThoughts = 40;
 
             //VIRUS

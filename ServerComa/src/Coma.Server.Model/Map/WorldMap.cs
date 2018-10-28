@@ -52,8 +52,8 @@ namespace Coma.Server.Model.Map
                     AddResourcePatch(40, mapsize, patchCenter, TileItemType.OBSTACLE);
                 }
 
-                var startX = random.Next(mapsize / 2);
-                var startY = random.Next(mapsize / 2);
+                var startX = 5 + random.Next(mapsize / 2);
+                var startY = 5 + random.Next(mapsize / 2);
 
                 tiles[0, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
@@ -69,8 +69,8 @@ namespace Coma.Server.Model.Map
                 Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_BODY);
 
-                var endX = startX + 50;
-                var endY = startY + 50;
+                var endX = startX + 40;
+                var endY = startY + 40;
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_ORGAN);
 
@@ -100,16 +100,16 @@ namespace Coma.Server.Model.Map
                 }
 
 
-                var startX = random.Next(mapsize / 2);
-                var startY = random.Next(mapsize / 2);
+                var startX = 5 + random.Next(mapsize / 2);
+                var startY = 5 + random.Next(mapsize / 2);
 
                 Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_SOUL);
 
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.FEELING);
 
-                var endX = startX + 50;
-                var endY = startY + 50;
+                var endX = startX + 40;
+                var endY = startY + 40;
 
                 tiles[endX, endY].Item = TileItemInfo.GetClone(TileItemType.CORRUPTED_FEELING);
 

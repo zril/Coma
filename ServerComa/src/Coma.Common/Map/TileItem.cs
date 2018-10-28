@@ -20,6 +20,8 @@ namespace Coma.Common.Map.Item
 
         public int MaintenanceCellCostRate { get; set; }
         public int MaintenanceThoughtCostRate { get; set; }
+        public int MaintenanceNutrientCostRate { get; set; }
+        public int MaintenanceIdeaCostRate { get; set; }
 
         public abstract string ToMessage();
 

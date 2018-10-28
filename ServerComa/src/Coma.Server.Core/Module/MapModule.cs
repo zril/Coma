@@ -14,41 +14,48 @@ namespace Coma.Server.Core.Module
 {
     public class MapModule : BaseModule
     {
-        private bool bodyInit = false;
-        private bool soulInit = false;
-
         public MapModule()
             : base(1000)
         { }
 
         public override void Update(TimeSpan elapsed)
         {
-            if (GameModel.Instance.BodyPlayer != null)
+            if (GameModel.Instance.BodyPlayer != null || GameModel.Instance.SoulPlayer != null)
             {
-                if (!bodyInit)
+                if (!GameModel.Instance.BodyCamInit && GameModel.Instance.BodyPlayer != null)
                 {
                     var camMessage = new CameraMessage(GameModel.Instance.BodyMap.Start.X, GameModel.Instance.BodyMap.Start.Y);
                     GlobalServer.Instance.SendMessage(GameModel.Instance.BodyPlayer.Id, camMessage.ToString());
-                    bodyInit = true;
+                    GameModel.Instance.BodyCamInit = true;
                 }
 
-                UpdateTiles(PlayerType.BODY);
-                MapMessage bodyMessage = new MapMessage(GameModel.Instance.BodyMap.GetTiles());
-                GlobalServer.Instance.SendMessage(GameModel.Instance.BodyPlayer.Id, bodyMessage.ToString());
-            }
-
-            if (GameModel.Instance.SoulPlayer != null)
-            {
-                if (!soulInit)
+                if (!GameModel.Instance.SoulCamInit && GameModel.Instance.SoulPlayer != null)
                 {
                     var camMessage = new CameraMessage(GameModel.Instance.SoulMap.Start.X, GameModel.Instance.SoulMap.Start.Y);
                     GlobalServer.Instance.SendMessage(GameModel.Instance.SoulPlayer.Id, camMessage.ToString());
-                    soulInit = true;
+                    GameModel.Instance.SoulCamInit = true;
                 }
 
+                ResetTiles(PlayerType.BODY);
+                ResetTiles(PlayerType.SOUL);
+
+                UpdateTiles(PlayerType.BODY);
                 UpdateTiles(PlayerType.SOUL);
-                MapMessage soulMessage = new MapMessage(GameModel.Instance.SoulMap.GetTiles());
-                GlobalServer.Instance.SendMessage(GameModel.Instance.SoulPlayer.Id, soulMessage.ToString());
+
+                ResolveDestructions(PlayerType.BODY);
+                ResolveDestructions(PlayerType.SOUL);
+
+                if (GameModel.Instance.BodyPlayer != null)
+                {
+                    MapMessage bodyMessage = new MapMessage(GameModel.Instance.BodyMap.GetTiles());
+                    GlobalServer.Instance.SendMessage(GameModel.Instance.BodyPlayer.Id, bodyMessage.ToString());
+                }
+
+                if (GameModel.Instance.SoulPlayer != null)
+                {
+                    MapMessage soulMessage = new MapMessage(GameModel.Instance.SoulMap.GetTiles());
+                    GlobalServer.Instance.SendMessage(GameModel.Instance.SoulPlayer.Id, soulMessage.ToString());
+                }
             }
 
             BankMessage bankMessage = new BankMessage(GameModel.Instance.Bank.Cells, GameModel.Instance.Bank.Nutrients, GameModel.Instance.Bank.Thoughts, GameModel.Instance.Bank.Ideas);
@@ -63,7 +70,7 @@ namespace Coma.Server.Core.Module
             }
         }
 
-        private void UpdateTiles(PlayerType mapType)
+        private void ResetTiles(PlayerType mapType)
         {
             var map = GameModel.Instance.GetMap(mapType);
 
@@ -77,6 +84,11 @@ namespace Coma.Server.Core.Module
                     map.GetTiles()[i, j].Radiance = false;
                 }
             }
+        }
+
+        private void UpdateTiles(PlayerType mapType)
+        {
+            var map = GameModel.Instance.GetMap(mapType);
 
             //execution fonctions
             for (int j = 0; j < map.GetTiles().GetLength(1); j++)
@@ -88,17 +100,25 @@ namespace Coma.Server.Core.Module
                     {
                         FunctionInfo fonctions = TileItemFunctionInfo.Get(map.GetTiles()[i, j].Item.ItemType);
                         fonctions.MainFunction.Execute(mapType, tmppos);
+                        fonctions.SecondaryFunction.Execute(mapType, tmppos);
 
                         //todo condition
-                        fonctions.SynergyFunction.Execute(mapType, tmppos);
+                        //fonctions.SynergyFunction.Execute(mapType, tmppos);
 
                         //maintenance
                         GameModel.Instance.Bank.Cells -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceCellCostRate;
                         GameModel.Instance.Bank.Thoughts -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceThoughtCostRate;
+                        GameModel.Instance.Bank.Nutrients -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceNutrientCostRate;
+                        GameModel.Instance.Bank.Ideas -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceIdeaCostRate;
                     }
                 }
             }
+        }
 
+        private void ResolveDestructions(PlayerType mapType)
+        {
+            var map = GameModel.Instance.GetMap(mapType);
+            
             for (int j = 0; j < map.GetTiles().GetLength(1); j++)
             {
                 for (int i = 0; i < map.GetTiles().GetLength(0); i++)
