@@ -60,9 +60,15 @@ public class Main : MonoBehaviour
             {
                 BankMessage bankMessage = Global.Instance.BankMessages.Dequeue();
                 SetBank(bankMessage.Cells, bankMessage.Nutrients, bankMessage.Thoughts, bankMessage.Ideas);
-                
+
             }
-                yield return null;
+            while (Global.Instance.CameraMessages.Count > 0)
+            {
+                CameraMessage cameraMessage = Global.Instance.CameraMessages.Dequeue();
+                GetComponent<InputControl>().MoveCamera(cameraMessage.X, cameraMessage.Y);
+
+            }
+            yield return null;
         }
     }
 
