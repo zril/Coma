@@ -53,7 +53,11 @@ namespace Coma.Server.Model.Map
                 tiles[0, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[mapsize - 1, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
                 tiles[mapsize - 1, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
-                
+                tiles[mapsize/2, 0].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[0, mapsize / 2].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[mapsize - 1, mapsize / 2].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+                tiles[mapsize / 2, mapsize - 1].Item = TileItemInfo.GetClone(TileItemType.VIRUS);
+
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.ORGAN);
 
                 var endX = startX + 50;
@@ -71,13 +75,13 @@ namespace Coma.Server.Model.Map
                 for (int n = 0; n < 12; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(30, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_SOUL);
+                    AddResourcePatch(60, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_SOUL);
                 }
 
                 for (int n = 0; n < 5; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(20, mapsize, patchCenter, TileItemType.RESOURCE_RARE_SOUL);
+                    AddResourcePatch(15, mapsize, patchCenter, TileItemType.RESOURCE_RARE_SOUL);
                 }
 
 
@@ -106,7 +110,9 @@ namespace Coma.Server.Model.Map
 
         private void AddResourcePatch(int size, int mapsize, Position center, TileItemType tileType)
         {
-            var patch = GenUtils.MazeGen(size, 5, false, 1, 1, 1, 1);
+            var square = tileType == TileItemType.RESOURCE_COMMON_SOUL;
+            var mazeness = tileType == TileItemType.RESOURCE_COMMON_SOUL ? 25 : 5;
+            var patch = GenUtils.MazeGen(size, mazeness, square, 1, 1, 1, 1);
 
             foreach(Position pos in patch)
             {
