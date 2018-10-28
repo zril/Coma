@@ -65,45 +65,57 @@ namespace Coma.Common.Map.Item
             type = TileItemType.BUILD_AREA_BODY;
             items[(int)type] = new BuildAreaBodyItem();
             items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
-            items[(int)type].MaintenanceCellCostRate = 1;
+            items[(int)type].MaintenanceCellCostRate = 2;
+            items[(int)type].CostCells = 30;
 
-            //BUILD
-            type = TileItemType.BUILD_AREA_SOUL;
-            items[(int)type] = new BuildAreaSoulItem();
-            items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
-            items[(int)type].MaintenanceThoughtCostRate = 1;
-
-            //GENERATOR
-            type = TileItemType.GENERATOR_SOUL;
-            items[(int)type] = new GeneratorSoulItem();
-            items[(int)type].Fonction = TileItemFonction.GENERATE;
+            //HARVEST
+            type = TileItemType.HARVESTOR_BODY;
+            items[(int)type] = new HarvestorBodyItem();
+            items[(int)type].Fonction = TileItemFonction.HARVEST;
+            items[(int)type].CostCells = 50;
 
             //GENERATOR
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new GeneratorBodyItem();
             items[(int)type].Fonction = TileItemFonction.GENERATE;
+            items[(int)type].CostCells = 50;
+            items[(int)type].CostNutrients = 30;
 
             //RADIANCE
             type = TileItemType.RADIANCE_AREA_BODY;
             items[(int)type] = new RadianceAreaBodyItem();
             items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
             items[(int)type].MaintenanceCellCostRate = 1;
+            items[(int)type].CostCells = 60;
+            items[(int)type].CostNutrients = 20;
 
-            //RADIANCE
-            type = TileItemType.RADIANCE_AREA_SOUL;
-            items[(int)type] = new RadianceAreaSoulItem();
-            items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
-            items[(int)type].MaintenanceThoughtCostRate = 1;
+            //BUILD
+            type = TileItemType.BUILD_AREA_SOUL;
+            items[(int)type] = new BuildAreaSoulItem();
+            items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
+            items[(int)type].MaintenanceThoughtCostRate = 5;
+            items[(int)type].CostThoughts = 30;
+            items[(int)type].CostIdeas = 15;
 
-            //HARVEST
-            type = TileItemType.HARVESTOR_BODY;
-            items[(int)type] = new HarvestorBodyItem();
-            items[(int)type].Fonction = TileItemFonction.HARVEST;
+            //GENERATOR
+            type = TileItemType.GENERATOR_SOUL;
+            items[(int)type] = new GeneratorSoulItem();
+            items[(int)type].Fonction = TileItemFonction.GENERATE;
+            items[(int)type].CostThoughts = 150;
 
             //HARVEST
             type = TileItemType.HARVESTOR_SOUL;
             items[(int)type] = new HarvestorSoulItem();
             items[(int)type].Fonction = TileItemFonction.HARVEST;
+            items[(int)type].CostThoughts = 30;
+            items[(int)type].CostIdeas = 10;
+
+            //RADIANCE
+            type = TileItemType.RADIANCE_AREA_SOUL;
+            items[(int)type] = new RadianceAreaSoulItem();
+            items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
+            items[(int)type].MaintenanceThoughtCostRate = 3;
+            items[(int)type].CostThoughts = 40;
 
             //VIRUS
             type = TileItemType.VIRUS;

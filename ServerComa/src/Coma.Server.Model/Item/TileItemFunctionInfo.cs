@@ -51,42 +51,42 @@ namespace Coma.Common.Map.Item
             //BUILD AREA
             type = TileItemType.BUILD_AREA_BODY;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new BuildAreaFunction(8);
-
-            //BUILD AREA
-            type = TileItemType.BUILD_AREA_SOUL;
-            items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new BuildAreaFunction(8);
-
+            items[(int)type].MainFunction = new BuildAreaFunction(6);
+            
             //GENERATOR
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new GeneratorFunction(8, ResourceType.CELLS);
-
-            //GENERATOR
-            type = TileItemType.GENERATOR_SOUL;
-            items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new GeneratorFunction(8, ResourceType.THOUGHTS);
-
-            //RADIANCE AREA
-            type = TileItemType.RADIANCE_AREA_BODY;
-            items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(8, 20);
-
-            //RADIANCE AREA
-            type = TileItemType.RADIANCE_AREA_SOUL;
-            items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(8, 20);
-
+            items[(int)type].MainFunction = new GeneratorFunction(4, ResourceType.CELLS);
+            
             //HARVESTOR
             type = TileItemType.HARVESTOR_BODY;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new HarvestFunction(1, 3);
 
+            //RADIANCE AREA
+            type = TileItemType.RADIANCE_AREA_BODY;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new RadianceFunction(8, 40);
+
+            //BUILD AREA
+            type = TileItemType.BUILD_AREA_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new BuildAreaFunction(11);
+
+            //GENERATOR
+            type = TileItemType.GENERATOR_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new GeneratorFunction(3, ResourceType.THOUGHTS);
+
             //HARVESTOR
             type = TileItemType.HARVESTOR_SOUL;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new HarvestFunction(1, 30);
+            items[(int)type].MainFunction = new HarvestFunction(2, 5);
+
+            //RADIANCE AREA
+            type = TileItemType.RADIANCE_AREA_SOUL;
+            items[(int)type] = new FunctionInfo();
+            items[(int)type].MainFunction = new RadianceFunction(5, 25);
 
             //VIRUS
             type = TileItemType.VIRUS;
