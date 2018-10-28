@@ -73,6 +73,8 @@ namespace Coma.Common.Map.Item
             type = TileItemType.RADIANCE_AREA_BODY;
             items[(int)type] = new FunctionInfo();
             items[(int)type].MainFunction = new RadianceFunction(8, 40);
+            items[(int)type].SynergyFunction = new RadianceFunction(12, 5);
+            items[(int)type].SynergyTrigger = TileItemType.BUILD_AREA_BODY;
 
             //BUILD AREA
             type = TileItemType.BUILD_AREA_SOUL;

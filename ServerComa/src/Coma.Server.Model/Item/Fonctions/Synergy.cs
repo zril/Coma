@@ -29,17 +29,25 @@ namespace Coma.Server.Model.Item.Fonctions
                     if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     postmp = new Position(center.X, center.Y - 1);
                     if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    postmp = new Position(center.X + 1, center.Y + 1);
+                    if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    postmp = new Position(center.X - 1, center.Y - 1);
+                    if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    postmp = new Position(center.X - 1, center.Y + 1);
+                    if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    postmp = new Position(center.X + 1, center.Y - 1);
+                    if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                 }
 
                 if (mode == TileItemSynergyMode.VERTICAL)
                 {
                     Position postmp;
-                    for (int j = 1; j <= 10; j++)
+                    for (int j = 1; j <= 8; j++)
                     {
                         postmp = new Position(center.X, center.Y + j);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
-                    for (int j = 1; j <= 10; j++)
+                    for (int j = 1; j <= 8; j++)
                     {
                         postmp = new Position(center.X, center.Y - j);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
@@ -49,14 +57,39 @@ namespace Coma.Server.Model.Item.Fonctions
                 if (mode == TileItemSynergyMode.HORIZONTAL)
                 {
                     Position postmp;
-                    for (int i = 1; i <= 10; i++)
+                    for (int i = 1; i <= 8; i++)
                     {
                         postmp = new Position(center.X, center.Y + i);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
-                    for (int i = 1; i <= 10; i++)
+                    for (int i = 1; i <= 8; i++)
                     {
                         postmp = new Position(center.X, center.Y - i);
+                        if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    }
+                }
+
+                if (mode == TileItemSynergyMode.DIAGONAL)
+                {
+                    Position postmp;
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        postmp = new Position(center.X + i, center.Y + i);
+                        if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    }
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        postmp = new Position(center.X - i, center.Y - i);
+                        if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    }
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        postmp = new Position(center.X - i, center.Y + i);
+                        if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
+                    }
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        postmp = new Position(center.X - i, center.Y + i);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
                 }

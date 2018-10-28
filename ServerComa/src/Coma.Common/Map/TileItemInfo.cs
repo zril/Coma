@@ -94,6 +94,7 @@ namespace Coma.Common.Map.Item
             items[(int)type].MaintenanceCellCostRate = 2;
             items[(int)type].CostCells = 60;
             items[(int)type].CostNutrients = 25;
+            items[(int)type].SynergyMode = TileItemSynergyMode.DIAGONAL;
 
             //BUILD
             type = TileItemType.BUILD_AREA_SOUL;
