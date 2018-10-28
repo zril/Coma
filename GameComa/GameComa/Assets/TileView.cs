@@ -42,19 +42,37 @@ public class TileView : MonoBehaviour {
 
     private void OnBecameVisible()
     {
-        UpdateUI();
-        currentTileUI.gameObject.SetActive(true);
+        if (MainController.IsTileUIVisible)
+        {
+            UpdateUI();
+            currentTileUI.gameObject.SetActive(true);
+        }
     }
 
     private void OnBecameInvisible()
     {
-        currentTileUI.gameObject.SetActive(false);
+        DisableTileUI();
     }
 
     public void UpdateTile(Tile tile)
     {
         this.currentTile = tile;
         UpdateDisplay();
+    }
+
+    public void DisableTileUI()
+    {
+        if(currentTileUI != null)
+            currentTileUI.gameObject.SetActive(false);
+    }
+
+    public void EnableTileUI()
+    {
+        if(TileRenderer.isVisible)
+        {
+            UpdateUI();
+            currentTileUI.gameObject.SetActive(true);
+        }
     }
 
     public void UpdateDisplay()
@@ -110,6 +128,7 @@ public class TileView : MonoBehaviour {
             {
                 influValueColor = MainController.PlayerIsBody ? TileColorInfluKOBody : TileColorInfluKOSoul;
             }
+
             float alpha = 0;
 
             if (currentTile.Influence != 0)
@@ -120,7 +139,7 @@ public class TileView : MonoBehaviour {
             TileInfluValueRenderer.color = influValueColor;
         }
 
-        if(TileItemRenderer.isVisible)
+        if(TileItemRenderer.isVisible && currentTileUI != null)
         {
             currentTileUI.UpdateDisplay(item);
         }
