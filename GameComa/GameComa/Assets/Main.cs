@@ -37,7 +37,7 @@ public class Main : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1,1), TileItemType.BUILD_AREA_BODY));
+            Global.Instance.SendCommand(new BuildParam(new Coma.Common.Position(1, 1), TileItemType.BUILD_AREA_BODY));
         }
 
     }
@@ -72,7 +72,7 @@ public class Main : MonoBehaviour
                         }
 
                         TileMap[x, y].UpdateTile(mapMessage.TileMap[x, y]);
-                        if(counter == maxElementsPerUpdate)
+                        if (counter == maxElementsPerUpdate)
                         {
                             counter = 0;
                             yield return null;
@@ -100,9 +100,10 @@ public class Main : MonoBehaviour
     public void DisableTileUI()
     {
         IsTileUIVisible = false;
-        foreach(var tile in TileMap)
+        foreach (var tile in TileMap)
         {
-            tile.DisableTileUI();
+            if (tile != null)
+                tile.DisableTileUI();
         }
     }
 
@@ -111,7 +112,8 @@ public class Main : MonoBehaviour
         IsTileUIVisible = true;
         foreach (var tile in TileMap)
         {
-            tile.EnableTileUI();
+            if (tile != null)
+                tile.EnableTileUI();
         }
     }
 
