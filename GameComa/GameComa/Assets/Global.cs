@@ -74,7 +74,6 @@ class Global
     private void MessageReceived(IRemoteConnection sender, string message)
     {
         messageCount++;
-        Debug.Log("received " + message);
 
 
         if (message.StartsWith(MessagePrefix.MAP))
@@ -91,6 +90,7 @@ class Global
         }
         else if(message.StartsWith(MessagePrefix.CAMERA))
         {
+            Debug.Log("received " + message);
             CameraMessage camMessage = new CameraMessage();
             camMessage.DeserializeArguments(message.Remove(0, MessagePrefix.CAMERA.Length));
             CameraMessages.Enqueue(camMessage);

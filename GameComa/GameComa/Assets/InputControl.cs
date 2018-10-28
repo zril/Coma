@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class InputControl : MonoBehaviour
 {
@@ -110,8 +111,13 @@ public class InputControl : MonoBehaviour
             SelectImage.GetComponent<Image>().color = Color.clear;
         }
 
+
     }
 
+    public void MoveCamera(int x, int y)
+    {
+        MainCamera.transform.DOMove(new Vector3(x, y, -10),1f);
+    }
 
     public void SelectForBuild(TileItemType type)
     {

@@ -181,11 +181,11 @@ MonoBehaviour:
   TileInfluValueRenderer: {fileID: 212630174134837314}
   TileColorBody: {r: 0.39215687, g: 0, b: 0, a: 1}
   TileColorSoul: {r: 0, g: 0, b: 0.39215687, a: 1}
-  TileColorInfluOKBody: {r: 1, g: 0.5019608, b: 0, a: 0}
+  TileColorInfluOKBody: {r: 1, g: 0.78431374, b: 0, a: 0}
   TileColorInfluOKSoul: {r: 0, g: 0.5019608, b: 1, a: 0}
   TileColorInfluKOBody: {r: 0, g: 0, b: 0, a: 0}
   TileColorInfluKOSoul: {r: 0, g: 0, b: 0, a: 0}
-  ColorCapValue: 50
+  ColorCapValue: 45
   TileUICanvas: {fileID: 0}
 --- !u!212 &212239728764212840
 SpriteRenderer:
