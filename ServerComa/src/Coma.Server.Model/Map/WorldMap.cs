@@ -34,16 +34,22 @@ namespace Coma.Server.Model.Map
             if (playerType == PlayerType.BODY)
             {
 
+                for (int n = 0; n < 30; n++)
+                {
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(28, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_BODY);
+                }
+
                 for (int n = 0; n < 12; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(30, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_BODY);
+                    AddResourcePatch(12, mapsize, patchCenter, TileItemType.RESOURCE_RARE_BODY);
                 }
 
-                for (int n = 0; n < 5; n++)
+                for (int n = 0; n < 10; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(20, mapsize, patchCenter, TileItemType.RESOURCE_RARE_BODY);
+                    AddResourcePatch(40, mapsize, patchCenter, TileItemType.OBSTACLE);
                 }
 
                 var startX = random.Next(mapsize / 2);
@@ -60,6 +66,9 @@ namespace Coma.Server.Model.Map
 
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.ORGAN);
 
+                Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
+                AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_BODY);
+
                 var endX = startX + 50;
                 var endY = startY + 50;
 
@@ -72,23 +81,29 @@ namespace Coma.Server.Model.Map
             //Soul
             if (playerType == PlayerType.SOUL)
             {
-                for (int n = 0; n < 12; n++)
+                for (int n = 0; n < 20; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(60, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_SOUL);
+                    AddResourcePatch(50, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_SOUL);
                 }
 
-                for (int n = 0; n < 5; n++)
+                for (int n = 0; n < 10; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
-                    AddResourcePatch(15, mapsize, patchCenter, TileItemType.RESOURCE_RARE_SOUL);
+                    AddResourcePatch(12, mapsize, patchCenter, TileItemType.RESOURCE_RARE_SOUL);
+                }
+
+                for (int n = 0; n < 10; n++)
+                {
+                    Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
+                    AddResourcePatch(40, mapsize, patchCenter, TileItemType.OBSTACLE);
                 }
 
 
                 var startX = random.Next(mapsize / 2);
                 var startY = random.Next(mapsize / 2);
-                
-                Position center = new Position(startX - 5 + random.Next(10), startY - 5 + random.Next(10));
+
+                Position center = new Position(startX - 10 + random.Next(20), startY - 10 + random.Next(20));
                 AddResourcePatch(20, mapsize, center, TileItemType.RESOURCE_COMMON_SOUL);
 
                 tiles[startX, startY].Item = TileItemInfo.GetClone(TileItemType.FEELING);
@@ -111,7 +126,7 @@ namespace Coma.Server.Model.Map
         private void AddResourcePatch(int size, int mapsize, Position center, TileItemType tileType)
         {
             var square = tileType == TileItemType.RESOURCE_COMMON_SOUL;
-            var mazeness = tileType == TileItemType.RESOURCE_COMMON_SOUL ? 25 : 5;
+            var mazeness = tileType == TileItemType.RESOURCE_COMMON_SOUL ? 20 : 5;
             var patch = GenUtils.MazeGen(size, mazeness, square, 1, 1, 1, 1);
 
             foreach(Position pos in patch)

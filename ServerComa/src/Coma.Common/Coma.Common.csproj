@@ -46,6 +46,7 @@
     <Compile Include="Direction.cs" />
     <Compile Include="Map\Items\HarvestorSoulItem.cs" />
     <Compile Include="Map\Items\HarvestorBodyItem.cs" />
+    <Compile Include="Map\Items\ObstacleItem.cs" />
     <Compile Include="Map\Items\RadianceAreaSoulItem.cs" />
     <Compile Include="Map\Items\RadianceAreaBodyItem.cs" />
     <Compile Include="Map\Items\GeneratorSoulItem.cs" />

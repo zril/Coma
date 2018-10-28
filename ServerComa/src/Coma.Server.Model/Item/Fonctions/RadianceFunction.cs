@@ -1,4 +1,5 @@
 ﻿using Coma.Common;
+using Coma.Common.Map.Item;
 using Coma.Server.Model.Map;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace Coma.Server.Model.Item.Fonctions
                     if (tmpPos.IsInMap(map.GetTiles().GetLength(0)))
                     {
                         var dist = tmpPos.Dist(pos);
-                        if (dist <= Radius)
+                        if (dist <= Radius && map.GetTiles()[tmpPos.X, tmpPos.Y].Item.ItemType != TileItemType.OBSTACLE)
                         {
                             var power = Power - (Power / Radius) * dist;
                             map.GetTiles()[tmpPos.X, tmpPos.Y].Influence += power;

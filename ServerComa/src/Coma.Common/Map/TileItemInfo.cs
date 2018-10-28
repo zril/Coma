@@ -41,6 +41,11 @@ namespace Coma.Common.Map.Item
             items[(int)type] = new NoItem();
             items[(int)type].Fonction = TileItemFonction.NONE;
 
+            //OBSTACLE
+            type = TileItemType.OBSTACLE;
+            items[(int)type] = new ObstacleItem();
+            items[(int)type].Fonction = TileItemFonction.OBSTACLE;
+
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_BODY;
             items[(int)type] = new ResourceBodyItem(100);
@@ -54,12 +59,12 @@ namespace Coma.Common.Map.Item
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_BODY;
             items[(int)type] = new ResourceBodyRareItem(100);
-            items[(int)type].Fonction = TileItemFonction.RESOURCE;
+            items[(int)type].Fonction = TileItemFonction.RARE_RESOURCE;
 
             //RESSOURCE
             type = TileItemType.RESOURCE_RARE_SOUL;
             items[(int)type] = new ResourceSoulRareItem(100);
-            items[(int)type].Fonction = TileItemFonction.RESOURCE;
+            items[(int)type].Fonction = TileItemFonction.RARE_RESOURCE;
 
             //BUILD
             type = TileItemType.BUILD_AREA_BODY;
@@ -129,7 +134,7 @@ namespace Coma.Common.Map.Item
 
             //ORGAN
             type = TileItemType.ORGAN;
-            items[(int)type] = new NightmareItem();
+            items[(int)type] = new OrganItem();
             items[(int)type].Fonction = TileItemFonction.POI;
 
             //CORRUPTED ORGAN

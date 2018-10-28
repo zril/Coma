@@ -11,10 +11,12 @@ namespace Coma.Common.Map.Item
         BUILD_AREA,
         GENERATE,
         HARVEST,
-        CREATE,
         RADIANCE_AREA,
+        CREATE,
         RESOURCE,
+        RARE_RESOURCE,
         POI,
-        HOSTILE
+        HOSTILE,
+        OBSTACLE
     }
 }

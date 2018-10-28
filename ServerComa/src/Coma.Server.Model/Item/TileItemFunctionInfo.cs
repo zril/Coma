@@ -32,6 +32,10 @@ namespace Coma.Common.Map.Item
             type = TileItemType.NONE;
             items[(int)type] = new FunctionInfo();
 
+            //NONE
+            type = TileItemType.OBSTACLE;
+            items[(int)type] = new FunctionInfo();
+
             //RESSOURCE
             type = TileItemType.RESOURCE_COMMON_BODY;
             items[(int)type] = new FunctionInfo();
@@ -101,7 +105,7 @@ namespace Coma.Common.Map.Item
             //ORGAN
             type = TileItemType.ORGAN;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(20, 50);
+            items[(int)type].MainFunction = new RadianceFunction(15, 40);
             items[(int)type].SynergyFunction = new BuildAreaFunction(20);
 
             //CORRUPTED ORGAN
@@ -112,7 +116,7 @@ namespace Coma.Common.Map.Item
             //FEELING
             type = TileItemType.FEELING;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(20, 50);
+            items[(int)type].MainFunction = new RadianceFunction(15, 40);
             items[(int)type].SynergyFunction = new BuildAreaFunction(20);
 
             //CORRUPTED FEELING
