@@ -9,7 +9,7 @@ namespace Coma.Common.Map.Item.Items
     {
         public FeelingItem()
         {
-            ItemType = TileItemType.VIRUS;
+            ItemType = TileItemType.FEELING;
         }
 
         public override void FromMessage(string message)

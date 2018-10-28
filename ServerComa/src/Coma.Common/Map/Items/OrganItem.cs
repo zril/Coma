@@ -9,7 +9,7 @@ namespace Coma.Common.Map.Item.Items
     {
         public OrganItem()
         {
-            ItemType = TileItemType.VIRUS;
+            ItemType = TileItemType.ORGAN;
         }
 
         public override void FromMessage(string message)
