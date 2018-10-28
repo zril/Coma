@@ -33,7 +33,9 @@ public class Main : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Global.Instance.InitClient(PlayerIsBody);
+        PlayerIsBody = FindObjectOfType<StaticController>().isBody;
+        string ip = FindObjectOfType<StaticController>().ip;
+        Global.Instance.InitClient(PlayerIsBody, ip);
         TileMap = null;
         StartCoroutine("MapMessagesCoroutine");
         StartCoroutine("GeneralMessagesCoroutine");

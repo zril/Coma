@@ -29,7 +29,7 @@ public class InputControl : MonoBehaviour
             MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileConstr");
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftAlt) && SelectedBuildItem != TileItemType.NONE)
+        if (Input.GetKeyUp(KeyCode.LeftAlt) && SelectedBuildItem == TileItemType.NONE)
         {
             MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileConstr"));
         }
