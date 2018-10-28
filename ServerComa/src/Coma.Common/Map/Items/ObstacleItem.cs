@@ -10,7 +10,7 @@ namespace Coma.Common.Map.Item.Items
 
         public ObstacleItem()
         {
-            ItemType = TileItemType.NONE;
+            ItemType = TileItemType.OBSTACLE;
         }
 
         public override void FromMessage(string message)

@@ -37,7 +37,7 @@ namespace Coma.Server.Core.Module
             {
                 for (int i = 0; i < map.GetTiles().GetLength(0); i++)
                 {
-                    if (map.GetTiles()[i, j].Influence == 0 && map.GetTiles()[i, j].Item.ItemType == TileItemType.NONE)
+                    if (map.GetTiles()[i, j].Influence <= 0 && map.GetTiles()[i, j].Influence >= -5 && map.GetTiles()[i, j].Item.ItemType == TileItemType.NONE)
                     {
                         nightmarePosList.Add(new Position(i, j));
                     }

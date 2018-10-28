@@ -34,7 +34,7 @@ namespace Coma.Server.Model.Map
             if (playerType == PlayerType.BODY)
             {
 
-                for (int n = 0; n < 30; n++)
+                for (int n = 0; n < 40; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
                     AddResourcePatch(28, mapsize, patchCenter, TileItemType.RESOURCE_COMMON_BODY);
@@ -46,7 +46,7 @@ namespace Coma.Server.Model.Map
                     AddResourcePatch(12, mapsize, patchCenter, TileItemType.RESOURCE_RARE_BODY);
                 }
 
-                for (int n = 0; n < 10; n++)
+                for (int n = 0; n < 20; n++)
                 {
                     Position patchCenter = new Position(random.Next(mapsize), random.Next(mapsize));
                     AddResourcePatch(40, mapsize, patchCenter, TileItemType.OBSTACLE);

@@ -151,10 +151,6 @@ namespace Coma.Common.Map.Item
             type = TileItemType.CORRUPTED_FEELING;
             items[(int)type] = new CorruptedFeelingItem();
             items[(int)type].Fonction = TileItemFonction.POI;
-
-            //TRUC 2
-            //type = TileItemType.GENERATOR_BODY;
-            //items[(int)type] =
         }
     }
 }
