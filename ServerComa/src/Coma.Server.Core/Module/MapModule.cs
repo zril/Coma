@@ -14,9 +14,13 @@ namespace Coma.Server.Core.Module
 {
     public class MapModule : BaseModule
     {
+        private Random random;
+
         public MapModule()
             : base(1000)
-        { }
+        {
+            random = new Random();
+        }
 
         public override void Update(TimeSpan elapsed)
         {
@@ -90,6 +94,11 @@ namespace Coma.Server.Core.Module
         {
             var map = GameModel.Instance.GetMap(mapType);
 
+            var listConsoCells = new List<Position>();
+            var listConsoThoughts= new List<Position>();
+            var listConsoNutrients = new List<Position>();
+            var listConsoIdeas = new List<Position>();
+
             //execution fonctions
             for (int j = 0; j < map.GetTiles().GetLength(1); j++)
             {
@@ -102,6 +111,23 @@ namespace Coma.Server.Core.Module
                         fonctions.MainFunction.Execute(mapType, tmppos);
                         fonctions.SecondaryFunction.Execute(mapType, tmppos);
 
+                        if(TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceCellCostRate > 0)
+                        {
+                            listConsoCells.Add(tmppos);
+                        }
+                        if (TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceThoughtCostRate > 0)
+                        {
+                            listConsoThoughts.Add(tmppos);
+                        }
+                        if (TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceNutrientCostRate > 0)
+                        {
+                            listConsoNutrients.Add(tmppos);
+                        }
+                        if (TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceIdeaCostRate > 0)
+                        {
+                            listConsoIdeas.Add(tmppos);
+                        }
+
                         //todo condition
                         //fonctions.SynergyFunction.Execute(mapType, tmppos);
 
@@ -112,6 +138,31 @@ namespace Coma.Server.Core.Module
                         GameModel.Instance.Bank.Ideas -= TileItemInfo.Get(map.GetTiles()[i, j].Item.ItemType).MaintenanceIdeaCostRate;
                     }
                 }
+            }
+
+            if (GameModel.Instance.Bank.Cells < 0 && listConsoCells.Count > 0)
+            {
+                var removePos = listConsoCells[random.Next(listConsoCells.Count)];
+                map.GetTiles()[removePos.X, removePos.Y].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                GameModel.Instance.Bank.Cells = 0;
+            }
+            if (GameModel.Instance.Bank.Thoughts < 0 && listConsoThoughts.Count > 0)
+            {
+                var removePos = listConsoThoughts[random.Next(listConsoThoughts.Count)];
+                map.GetTiles()[removePos.X, removePos.Y].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                GameModel.Instance.Bank.Thoughts = 0;
+            }
+            if (GameModel.Instance.Bank.Nutrients < 0 && listConsoNutrients.Count > 0)
+            {
+                var removePos = listConsoNutrients[random.Next(listConsoNutrients.Count)];
+                map.GetTiles()[removePos.X, removePos.Y].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                GameModel.Instance.Bank.Nutrients = 0;
+            }
+            if (GameModel.Instance.Bank.Ideas < 0 && listConsoIdeas.Count > 0)
+            {
+                var removePos = listConsoIdeas[random.Next(listConsoIdeas.Count)];
+                map.GetTiles()[removePos.X, removePos.Y].Item = TileItemInfo.GetClone(TileItemType.NONE);
+                GameModel.Instance.Bank.Ideas = 0;
             }
         }
 

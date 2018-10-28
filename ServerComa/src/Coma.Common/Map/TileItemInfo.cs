@@ -70,7 +70,7 @@ namespace Coma.Common.Map.Item
             type = TileItemType.BUILD_AREA_BODY;
             items[(int)type] = new BuildAreaBodyItem();
             items[(int)type].Fonction = TileItemFonction.BUILD_AREA;
-            items[(int)type].MaintenanceCellCostRate = 2;
+            items[(int)type].MaintenanceCellCostRate = 1;
             items[(int)type].CostCells = 30;
 
             //HARVEST
@@ -83,16 +83,16 @@ namespace Coma.Common.Map.Item
             type = TileItemType.GENERATOR_BODY;
             items[(int)type] = new GeneratorBodyItem();
             items[(int)type].Fonction = TileItemFonction.GENERATE;
-            items[(int)type].CostCells = 50;
+            items[(int)type].CostCells = 65;
             items[(int)type].CostNutrients = 30;
 
             //RADIANCE
             type = TileItemType.RADIANCE_AREA_BODY;
             items[(int)type] = new RadianceAreaBodyItem();
             items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
-            items[(int)type].MaintenanceCellCostRate = 1;
+            items[(int)type].MaintenanceCellCostRate = 2;
             items[(int)type].CostCells = 60;
-            items[(int)type].CostNutrients = 20;
+            items[(int)type].CostNutrients = 25;
 
             //BUILD
             type = TileItemType.BUILD_AREA_SOUL;
@@ -121,7 +121,8 @@ namespace Coma.Common.Map.Item
             items[(int)type].Fonction = TileItemFonction.RADIANCE_AREA;
             items[(int)type].MaintenanceThoughtCostRate = 3;
             items[(int)type].MaintenanceIdeaCostRate = 1;
-            items[(int)type].CostThoughts = 40;
+            items[(int)type].CostThoughts = 30;
+            items[(int)type].CostThoughts = 5;
 
             //VIRUS
             type = TileItemType.VIRUS;
