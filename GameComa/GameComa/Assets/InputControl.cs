@@ -28,7 +28,7 @@ public class InputControl : MonoBehaviour
             MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileConstr");
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftAlt))
+        if (Input.GetKeyUp(KeyCode.LeftAlt) && SelectedBuildItem != TileItemType.NONE)
         {
             MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileConstr"));
         }
@@ -43,27 +43,27 @@ public class InputControl : MonoBehaviour
             MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileInflu"));
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Z))
         {
             MainCamera.transform.position += new Vector3(0, 1) * Time.deltaTime * CameraSpeed;
         }
 
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
             MainCamera.transform.position += new Vector3(0, -1) * Time.deltaTime * CameraSpeed;
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.Q))
         {
             MainCamera.transform.position += new Vector3(-1, 0) * Time.deltaTime * CameraSpeed;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             MainCamera.transform.position += new Vector3(1, 0) * Time.deltaTime * CameraSpeed;
         }
 
-        if(Input.mouseScrollDelta.y > 0 && MainCamera.orthographicSize > 4)
+        if (Input.mouseScrollDelta.y > 0 && MainCamera.orthographicSize > 4)
         {
             MainCamera.orthographicSize -= 1;
             CameraSpeed -= 1f;
@@ -94,12 +94,20 @@ public class InputControl : MonoBehaviour
             SelectImage.position = pos;
         }
 
-        if (Input.GetMouseButtonDown(0) && SelectedBuildItem != TileItemType.NONE)
+        if ((Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape)) && SelectedBuildItem != TileItemType.NONE)
         {
             //RequestForBuild
-            MainController.RequestForBuild(SelectedBuildItem, (int)SelectImage.position.x, (int)SelectImage.position.y);
+            if (Input.GetMouseButtonDown(0))
+            {
+                MainController.RequestForBuild(SelectedBuildItem, (int)SelectImage.position.x, (int)SelectImage.position.y);
+            }
             SelectedBuildItem = TileItemType.NONE;
+            if (!Input.GetKey(KeyCode.LeftAlt))
+            {
+                MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileConstr"));
+            }
             SelectImage.GetComponent<Image>().sprite = null;
+            SelectImage.GetComponent<Image>().color = Color.clear;
         }
 
     }
@@ -107,6 +115,7 @@ public class InputControl : MonoBehaviour
 
     public void SelectForBuild(TileItemType type)
     {
+        MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileConstr");
         TileItem item = TileItemInfo.Get(type);
         SelectImage.GetComponent<Image>().sprite = MainController.TileItemSprites[(int)item.Fonction];
         Color col = MainController.TileItemColors[(int)item.Synergy];

@@ -1146,7 +1146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0f8d8822431f94dab4070a895e41c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemTypes: 01000000020000000300000004000000
+  BodyItemTypes: 01000000020000000300000004000000
+  SoulItemTypes: 05000000060000000700000008000000
   ButtonContainer: {fileID: 1399551200}
   maxItemsPerRow: 3
   ButtonPrefab: {fileID: 1967932476002176, guid: d98cfe8c0e28e7147a0a84dd3137d2a2,

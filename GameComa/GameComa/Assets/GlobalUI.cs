@@ -8,7 +8,9 @@ using DG.Tweening;
 
 public class GlobalUI : MonoBehaviour {
 
-    public List<TileItemType> ItemTypes;
+    public List<TileItemType> BodyItemTypes;
+    public List<TileItemType> SoulItemTypes;
+    private List<TileItemType> ItemTypes;
     public Transform ButtonContainer;
     public int maxItemsPerRow;
     public GameObject ButtonPrefab;
@@ -23,6 +25,8 @@ public class GlobalUI : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+
+        ItemTypes = FindObjectOfType<Main>().PlayerIsBody ? BodyItemTypes : SoulItemTypes;
 
         int buttonRow = 0;
         int buttonColumn = 0;
