@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c232656139b3714f8db687854e2421f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerIsBody: 0
+  PlayerIsBody: 1
   TileSprites:
   - {fileID: 21300000, guid: 88fe175aa6673944bb4fdc7591dee574, type: 3}
   - {fileID: 21300000, guid: 88fe175aa6673944bb4fdc7591dee574, type: 3}
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0f8d8822431f94dab4070a895e41c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemTypes: 0d00000001000000
+  ItemTypes: 01000000020000000000000005000000
   ButtonContainer: {fileID: 1399551200}
   maxItemsPerRow: 3
   ButtonPrefab: {fileID: 1967932476002176, guid: d98cfe8c0e28e7147a0a84dd3137d2a2,
