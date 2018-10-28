@@ -9,7 +9,6 @@ using Coma.Common.Map.Item;
 public class Main : MonoBehaviour
 {
     public bool PlayerIsBody;
-    Dictionary<int, GameObject> players;
 
     public List<Sprite> TileSprites;
     public List<Sprite> TileItemSprites;
@@ -24,6 +23,8 @@ public class Main : MonoBehaviour
 
     public bool IsTileUIVisible = true;
 
+    private GlobalUI globalUI;
+
     public int BankCells = 0;
     public int BankNutrients = 0;
     public int BankThoughts = 0;
@@ -33,9 +34,9 @@ public class Main : MonoBehaviour
     void Start()
     {
         Global.Instance.InitClient(PlayerIsBody);
-        players = new Dictionary<int, GameObject>();
         TileMap = null;
         StartCoroutine("MapMessagesCoroutine");
+        globalUI = FindObjectOfType<GlobalUI>();
     }
 
     // Update is called once per frame
@@ -145,6 +146,7 @@ public class Main : MonoBehaviour
         BankNutrients = nutrients;
         BankThoughts = thoughts;
         BankIdeas = ideas;
+        globalUI.UpdateBankAccounts(cells, nutrients, thoughts, ideas);
     }
 
     private void OnApplicationQuit()
