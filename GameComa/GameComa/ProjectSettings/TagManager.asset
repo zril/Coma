@@ -18,8 +18,8 @@ TagManager:
   - TileItems
   - TileUI
   - TileUIAlt
-  - 
-  - 
+  - TileConstr
+  - TileInflu
   - 
   - 
   - 
@@ -44,6 +44,12 @@ TagManager:
     locked: 0
   - name: Tiles
     uniqueID: 3356381681
+    locked: 0
+  - name: TileConstr
+    uniqueID: 2066507285
+    locked: 0
+  - name: TileInflu
+    uniqueID: 3725939747
     locked: 0
   - name: TileItems
     uniqueID: 558447507

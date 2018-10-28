@@ -15,6 +15,18 @@ public class TileView : MonoBehaviour {
 
     public SpriteRenderer TileItemRenderer;
     public SpriteRenderer TileRenderer;
+    public SpriteRenderer TileConstructRenderer;
+    public SpriteRenderer TileInfluCoverRenderer;
+    public SpriteRenderer TileInfluValueRenderer;
+
+    public Color TileColorBody;
+    public Color TileColorSoul;
+    public Color TileColorInfluOKBody;
+    public Color TileColorInfluOKSoul;
+    public Color TileColorInfluKOBody;
+    public Color TileColorInfluKOSoul;
+
+    public float ColorCapValue;
 
     public Transform TileUICanvas;
     
@@ -30,7 +42,6 @@ public class TileView : MonoBehaviour {
 
     private void OnBecameVisible()
     {
-
         UpdateUI();
         currentTileUI.gameObject.SetActive(true);
     }
@@ -51,10 +62,21 @@ public class TileView : MonoBehaviour {
         TileItem item = null;
 
         TileRenderer.sprite = MainController.TileSprites[(int)currentTile.Type];
+        TileRenderer.color = MainController.PlayerIsBody ? TileColorBody : TileColorSoul;
         if(currentTile == null || currentTile.Type == TileType.NONE)
         {
             // Erase all
             TileItemRenderer.sprite = null;
+
+            Color consColor = TileConstructRenderer.color;
+            consColor.a = 0;
+            TileConstructRenderer.color = consColor;
+
+            Color influColor = TileInfluCoverRenderer.color;
+            influColor.a = 0;
+            TileInfluCoverRenderer.color = influColor;
+
+            TileInfluValueRenderer.color = Color.clear;
         }
         else
         {
@@ -70,6 +92,32 @@ public class TileView : MonoBehaviour {
                 TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
                 TileItemRenderer.color = MainController.TileItemColors[(int)item.SynergyMode];
             }
+            Color consColor = TileConstructRenderer.color;
+            consColor.a = currentTile.Contructable ? 0.25f : 0;
+            TileConstructRenderer.color = consColor;
+
+            Color influColor = TileInfluCoverRenderer.color;
+            influColor.a = currentTile.Radiance ? 0.25f : 0;
+            TileInfluCoverRenderer.color = influColor;
+
+            Color influValueColor = Color.black;
+
+            if (currentTile.Influence > 0)
+            {
+                influValueColor = MainController.PlayerIsBody ? TileColorInfluOKBody : TileColorInfluOKSoul;
+            }
+            else
+            {
+                influValueColor = MainController.PlayerIsBody ? TileColorInfluKOBody : TileColorInfluKOSoul;
+            }
+            float alpha = 0;
+
+            if (currentTile.Influence != 0)
+            {
+                alpha = 0.4f + 0.4f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
+            }
+            influValueColor.a = alpha;
+            TileInfluValueRenderer.color = influValueColor;
         }
 
         if(TileItemRenderer.isVisible)

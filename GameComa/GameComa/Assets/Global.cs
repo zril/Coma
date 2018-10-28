@@ -41,12 +41,13 @@ class Global
     private int messageCount = 0;
     private int port = 4242;
     private string serverIp = "127.0.0.1";
-    private string userName = "soul";
+    private string userName = "nope";
 
-    public void InitClient()
+    public void InitClient(bool body)
     {
         if (PlayerId == 0)
         {
+            userName = body ? "body" : "soul";
             var randomport = UnityEngine.Random.Range(0, 1000);
             Settings.Default.ClientPort = port + randomport;
             Client = new TcpSocketClient();

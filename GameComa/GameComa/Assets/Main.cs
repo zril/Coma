@@ -8,6 +8,7 @@ using Coma.Common.Map.Item;
 
 public class Main : MonoBehaviour
 {
+    public bool PlayerIsBody;
     Dictionary<int, GameObject> players;
 
     public List<Sprite> TileSprites;
@@ -24,7 +25,7 @@ public class Main : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Global.Instance.InitClient();
+        Global.Instance.InitClient(PlayerIsBody);
         players = new Dictionary<int, GameObject>();
         TileMap = null;
         StartCoroutine("MessagesCoroutine");

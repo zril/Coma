@@ -25,22 +25,22 @@ public class InputControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
-            MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileUIAlt");
+            MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileConstr");
         }
 
         if (Input.GetKeyUp(KeyCode.LeftAlt))
         {
-            MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileUIAlt"));
+            MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileConstr"));
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileUI");
+            MainCamera.cullingMask |= 1 << LayerMask.NameToLayer("TileInflu");
         }
 
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileUI"));
+            MainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("TileInflu"));
         }
 
         if (Input.GetKey(KeyCode.UpArrow))
@@ -88,7 +88,9 @@ public class InputControl : MonoBehaviour
     {
         TileItem item = TileItemInfo.Get(type);
         SelectImage.GetComponent<Image>().sprite = MainController.TileItemSprites[(int)item.Fonction];
-        SelectImage.GetComponent<Image>().color = MainController.TileItemColors[(int)item.Synergy];
+        Color col = MainController.TileItemColors[(int)item.Synergy];
+        col.a = 0.2f;
+        SelectImage.GetComponent<Image>().color = col;
         SelectedBuildItem = type;
     }
 

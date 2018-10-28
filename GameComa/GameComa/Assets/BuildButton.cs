@@ -19,8 +19,7 @@ public class BuildButton : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        InputController = FindObjectOfType<InputControl>();
-        MainController = FindObjectOfType<Main>();
+        Init();
     }
 
     // Update is called once per frame
@@ -34,8 +33,16 @@ public class BuildButton : MonoBehaviour
         InputController.SelectForBuild(ItemType);
     }
 
+    private void Init()
+    {
+        InputController = FindObjectOfType<InputControl>();
+        MainController = FindObjectOfType<Main>();
+    }
+
     public void UpdateDisplay()
     {
+        Init();
+
         if (Item == null)
         {
             Item = TileItemInfo.Get(ItemType);
