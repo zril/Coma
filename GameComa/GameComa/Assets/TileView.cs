@@ -133,7 +133,7 @@ public class TileView : MonoBehaviour {
 
             if (currentTile.Influence != 0)
             {
-                alpha = 0.4f + 0.4f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
+                alpha = 0.1f + 0.75f * Mathf.Min(1f, Mathf.Abs(currentTile.Influence / ColorCapValue));
             }
             influValueColor.a = alpha;
             TileInfluValueRenderer.color = influValueColor;
