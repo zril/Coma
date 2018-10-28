@@ -16,9 +16,9 @@ namespace Coma.Server.Model
         public Bank()
         {
             Cells = 200;
-            Nutrients = 200;
+            Nutrients = 0;
             Thoughts = 200;
-            Ideas = 200;
+            Ideas = 0;
         }
     }
 }
