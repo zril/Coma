@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Coma.Common
 {
-    public class Position
+    public class Position : IEquatable<Position>
     {
         public int X { get; set; }
         public int Y { get; set; }

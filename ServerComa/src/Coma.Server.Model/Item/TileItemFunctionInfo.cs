@@ -69,7 +69,7 @@ namespace Coma.Common.Map.Item
             //HARVESTOR
             type = TileItemType.HARVESTOR_BODY;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new HarvestFunction(1, 3);
+            items[(int)type].MainFunction = new HarvestFunction(1, 4);
 
             //RADIANCE AREA
             type = TileItemType.RADIANCE_AREA_BODY;
@@ -92,7 +92,7 @@ namespace Coma.Common.Map.Item
             //HARVESTOR
             type = TileItemType.HARVESTOR_SOUL;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new HarvestFunction(2, 5);
+            items[(int)type].MainFunction = new HarvestFunction(2, 2);
 
             //RADIANCE AREA
             type = TileItemType.RADIANCE_AREA_SOUL;
@@ -116,7 +116,7 @@ namespace Coma.Common.Map.Item
             //ORGAN
             type = TileItemType.ORGAN;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(15, 60);
+            items[(int)type].MainFunction = new RadianceFunction(15, 80);
             items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED ORGAN
@@ -127,7 +127,7 @@ namespace Coma.Common.Map.Item
             //FEELING
             type = TileItemType.FEELING;
             items[(int)type] = new FunctionInfo();
-            items[(int)type].MainFunction = new RadianceFunction(15, 60);
+            items[(int)type].MainFunction = new RadianceFunction(15, 80);
             items[(int)type].SecondaryFunction = new BuildAreaFunction(20);
 
             //CORRUPTED FEELING

@@ -17,7 +17,7 @@ namespace Coma.Server.Core.Module
         private Random random;
 
         public NightmareModule()
-            : base(5000)
+            : base(6000)
         {
             random = new Random();
         }

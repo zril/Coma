@@ -33,9 +33,9 @@ namespace Coma.Server.Model.Map
                 Position newBorderTile;
                 if (!isLast) k = random.Next(4);
 
-                //int d = (random.Next(2) * 2) - 1;
+                int d = (random.Next(2) * 2) - 1;
                 //technique pour rendre aléatoire l'ordre d'ajout des nouvelles bordures
-                int d = 1;
+                //int d = 1;
                 k = (k + d) % 4;
                 if (k < 0) k += 4;
                 for (int j = 0; j < 4; j++)
