@@ -58,19 +58,19 @@ public class BuildButton : MonoBehaviour
 
         string cost = "";
         if (Item.CostCells > 0)
-            cost += Item.CostCells + "$  ";
+            cost += Item.CostCells + "C  ";
 
         if (Item.CostThoughts > 0)
-            cost += Item.CostThoughts + "¤";
+            cost += Item.CostThoughts + "T";
 
         if (cost != "")
             cost = cost.Trim() + "\n";
 
         if (Item.CostNutrients > 0)
-            cost += Item.CostNutrients + "€  ";
+            cost += Item.CostNutrients + "N  ";
 
         if (Item.CostIdeas > 0)
-            cost += Item.CostIdeas + "£";
+            cost += Item.CostIdeas + "I";
 
         Text.text = cost.Trim();
     }
