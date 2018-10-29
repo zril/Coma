@@ -87,6 +87,7 @@ namespace Coma.Server.Core.Module
                     map.GetTiles()[i, j].Influence = 0;
                     map.GetTiles()[i, j].Contructable = false;
                     map.GetTiles()[i, j].Radiance = false;
+                    map.GetTiles()[i, j].Item.Synergy = 0;
                 }
             }
         }

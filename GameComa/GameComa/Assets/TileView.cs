@@ -138,29 +138,43 @@ public class TileView : MonoBehaviour
                 if(wasEmpty)
                 {
                     color.a = 0f;
+                    TileItemRenderer.color = color;
+                    var tween = TileItemRenderer.DOFade(1f, 0.5f);
                 }
-                TileItemRenderer.color = color;
-                var tween = TileItemRenderer.DOFade(1f, 0.5f);
+                
 
                 if(currentTile.Item.Synergy > 0 && SynergyMarker == null)
                 {
                     //DoTween + Instantiate marker
                     color.a = 1f;
-                    tween.OnComplete(() =>
-                    {
-                        SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, .5f).SetLoops(-1, LoopType.Yoyo);
-                    });
+                    //tween.OnComplete(() =>
+                    //{
+                    SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, 1f).SetLoops(-1, LoopType.Yoyo);
+                    //});
                     SynergyMarker = Instantiate<GameObject>(SynergyMarkerPrefab, transform);
                     SynergyMarker.GetComponent<SynergyMarker>().SynergyMode = item.SynergyMode;
-                    Debug.Log(item.SynergyMode);
+                    //Debug.Log(item.SynergyMode);
                 }
-                else if(currentTile.Item.Synergy == 0 && SynergyMarker != null)
+
+                if (currentTile.Item.Synergy > 0 && SynergyMarker != null)
+                {
+                    SynergyTween.timeScale = currentTile.Item.Synergy;
+                }
+
+                if (currentTile.Item.Synergy == 0 && SynergyMarker != null)
                 {
                     // Stop Tweening + Destroy marker
-                    SynergyTween.Complete();
-                    //Destroy(SynergyMarker);
+                    SynergyTween.Kill();
+                    Destroy(SynergyMarker);
                     TileItemRenderer.color = color;
                 }
+
+                /*if (currentTile.Item.Synergy > 0 && SynergyMarker != null)
+                {
+                    SynergyTween.timeScale = currentTile.Item.Synergy;
+                }*/
+
+
 
             }
             Color consColor = TileConstructRenderer.color;

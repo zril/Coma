@@ -14,7 +14,7 @@ public class SynergyMarker : MonoBehaviour {
         MainController = FindObjectOfType<Main>();
         var SynergyRenderer = GetComponent<SpriteRenderer>();
         SynergyRenderer.sprite = MainController.TileItemSynergySprites[(int)SynergyMode];
-        Debug.Log(SynergyMode);
+        //Debug.Log(SynergyMode);
         switch(SynergyMode)
         {
             case TileItemSynergyMode.NONE:

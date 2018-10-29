@@ -59,12 +59,12 @@ namespace Coma.Server.Model.Item.Fonctions
                     Position postmp;
                     for (int i = 1; i <= 8; i++)
                     {
-                        postmp = new Position(center.X, center.Y + i);
+                        postmp = new Position(center.X + i, center.Y);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
                     for (int i = 1; i <= 8; i++)
                     {
-                        postmp = new Position(center.X, center.Y - i);
+                        postmp = new Position(center.X - i, center.Y);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
                 }
