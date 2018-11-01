@@ -89,7 +89,7 @@ namespace Coma.Server.Model.Item.Fonctions
                     }
                     for (int i = 1; i <= 3; i++)
                     {
-                        postmp = new Position(center.X - i, center.Y + i);
+                        postmp = new Position(center.X + i, center.Y - i);
                         if (postmp.IsInMap(mapsize) && map.GetTiles()[postmp.X, postmp.Y].Item.ItemType == trigger) res++;
                     }
                 }

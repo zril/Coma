@@ -50,6 +50,9 @@ namespace Coma.Server.Model
             BodyMap = new WorldMap(mapSize, PlayerType.BODY);
             SoulMap = new WorldMap(mapSize, PlayerType.SOUL);
 
+            BodyCamInit = false;
+            SoulCamInit = false;
+
             EnemyPowerBonus = 0;
             EnemyRadiusBonus = 0;
 
@@ -68,6 +71,11 @@ namespace Coma.Server.Model
             }
 
             return null;
+        }
+
+        public void Reset()
+        {
+            instance = new GameModel();
         }
     }
 }

@@ -37,6 +37,7 @@ public class TileView : MonoBehaviour
     public GameObject SynergyMarkerPrefab;
     private GameObject SynergyMarker;
     private Tween SynergyTween;
+    private bool empty;
 
     // Use this for initialization
     void Start()
@@ -105,11 +106,15 @@ public class TileView : MonoBehaviour
             TileInfluCoverRenderer.color = influColor;
 
             TileInfluValueRenderer.color = Color.clear;
+
+            empty = true;
         }
         else
         {
             if (currentTile.Item == null || currentTile.Item.ItemType == TileItemType.NONE)
             {
+                empty = true;
+
                 if (SynergyMarker != null)
                 {
                     Destroy(SynergyMarker);
@@ -124,6 +129,7 @@ public class TileView : MonoBehaviour
                 }
                 else
                 {
+                    //Debug.Log("Sprite null 3");
                     TileItemRenderer.sprite = null;
                 }
             }
@@ -132,14 +138,17 @@ public class TileView : MonoBehaviour
                 // Replace with constant TileItem
                 item = TileItemInfo.Get(currentTile.Item.ItemType);
 
-                bool wasEmpty = TileItemRenderer.sprite == null;
+                //bool wasEmpty = TileItemRenderer.sprite == null;
                 Color color = Color.white;
                 TileItemRenderer.sprite = MainController.TileItemSprites[(int)item.Fonction];
-                if(wasEmpty)
+
+                Tweener fade = null;
+                if(empty)
                 {
-                    color.a = 0f;
+                    //color.a = 0f;
                     TileItemRenderer.color = color;
-                    var tween = TileItemRenderer.DOFade(1f, 0.5f);
+                    fade = TileItemRenderer.DOFade(1f, 0.5f);
+                    empty = false;
                 }
                 
 
@@ -147,16 +156,23 @@ public class TileView : MonoBehaviour
                 {
                     //DoTween + Instantiate marker
                     color.a = 1f;
-                    //tween.OnComplete(() =>
-                    //{
-                    SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, 1f).SetLoops(-1, LoopType.Yoyo);
-                    //});
+                    if (fade == null)
+                    {
+                        SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, 1f).SetLoops(-1, LoopType.Yoyo);
+                    } else
+                    {
+                        fade.OnComplete(() =>
+                        {
+                            SynergyTween = TileItemRenderer.DOColor(MainController.PlayerIsBody ? TileColorSynergyBody : TileColorSynergySoul, 1f).SetLoops(-1, LoopType.Yoyo);
+                        });
+                    }
+                    
                     SynergyMarker = Instantiate<GameObject>(SynergyMarkerPrefab, transform);
                     SynergyMarker.GetComponent<SynergyMarker>().SynergyMode = item.SynergyMode;
                     //Debug.Log(item.SynergyMode);
                 }
 
-                if (currentTile.Item.Synergy > 0 && SynergyMarker != null)
+                if (currentTile.Item.Synergy > 0 && SynergyMarker != null && SynergyTween != null)
                 {
                     SynergyTween.timeScale = currentTile.Item.Synergy;
                 }

@@ -186,7 +186,7 @@ MonoBehaviour:
   TileColorInfluKOBody: {r: 0, g: 0, b: 0, a: 0}
   TileColorInfluKOSoul: {r: 0, g: 0, b: 0, a: 0}
   TileColorSynergyBody: {r: 1, g: 1, b: 0, a: 1}
-  TileColorSynergySoul: {r: 0, g: 1, b: 1, a: 0}
+  TileColorSynergySoul: {r: 0, g: 1, b: 1, a: 1}
   ColorCapValue: 45
   TileUICanvas: {fileID: 0}
   SynergyMarkerPrefab: {fileID: 1516553774162718, guid: 36b8a69040798c040bb657bbb4d83642,

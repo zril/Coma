@@ -52,10 +52,29 @@ namespace Coma.Server
 
                 #endregion
 
-                Console.WriteLine("Press any key to stop the server...");
+                Console.WriteLine("Press space to restart a new game.");
+                Console.WriteLine("Press escape to stop the server...");
 
                 Console.WriteLine();
-                var key = Console.ReadKey();
+                ConsoleKeyInfo key = Console.ReadKey(); ;
+                
+
+                while (key.Key != ConsoleKey.Escape)
+                {
+                    key = Console.ReadKey();
+                    if (key.Key == ConsoleKey.Spacebar)
+                    {
+                        Console.WriteLine("restarting a new game...");
+                        var bodyplayer = GameModel.Instance.BodyPlayer;
+                        var soulplayer = GameModel.Instance.SoulPlayer;
+                        GameModel.Instance.Reset();
+                        GameModel.Instance.BodyPlayer = bodyplayer;
+                        GameModel.Instance.SoulPlayer = soulplayer;
+                        StopModules();
+                        StartModules();
+                    }
+                }
+
                 Console.WriteLine();
 
                 #region stop module loop

@@ -17,7 +17,7 @@ namespace Coma.Server.Core.Module
         private Random random;
 
         public EnemyRadiusModule()
-            : base(300000)
+            : base(660000)
         {
             random = new Random();
         }
